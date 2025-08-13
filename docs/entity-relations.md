@@ -15,7 +15,7 @@ erDiagram
     }
 
     Admin {
-        
+
     }
 
     Student {
@@ -25,8 +25,8 @@ erDiagram
         string loginCode
         enum specificRequirements
     }
-    
-    
+
+
     StudentSpecificRequirement {
         string type
         string name
@@ -35,22 +35,22 @@ erDiagram
 
     Teacher {
     }
-    
+
     School {
         string name
         bigint schoolcode
 
     }
-    
+
     SchoolClass {
-        
+
     }
-    
-    
+
+
     CardDeck {
-        
+
     }
-    
+
     CardDeckProgress {
         string studentId FK
         string cardDeckId FK
@@ -60,7 +60,7 @@ erDiagram
         enum teacherState "inReview|assesmentConfirmed"
         bool assesmentConfirmedByTeacher
     }
-    
+
     CardAnswer {
         string studentId FK
         string cardId FK
@@ -69,7 +69,7 @@ erDiagram
         string LLMassesment
         boolean assessmentApproved
     }
-    
+
     CardTemplate {
         string description
         int deckPosition
@@ -79,7 +79,7 @@ erDiagram
         number rangeCheckLowBound
         number rangeCheckUpperBound
     }
-    
+
     Card {
         int deckPosition "PK with id"
         string description
@@ -90,47 +90,47 @@ erDiagram
         number rangeCheckLowBound
         number rangeCheckUpperBound
     }
-    
+
     ActivityType {
         enum type "TextInput|Simulation|Voting"
     }
-    
+
     Subject{
-        
+
     }
-    
+
     Topic{
-        
+
     }
-    
+
 
     User ||--|| UserRole : "has"
     User ||--o| Teacher : "extends when role is 'teacher'"
-    
+
     Admin ||--o{ School: "owns"
     Admin ||--o{ CardTemplate: "creates"
-    
+
     Teacher ||--o{ CardDeck : "owns, creates, deletes"
     Teacher ||--o{ SchoolClass: "belongs to"
-    
-    
+
+
     SchoolClass ||--o| School: "belongs to"
-    
+
     CardDeck ||--o{ Card: "contains"
     CardDeck ||--o{ Subject: "belongs to"
 
     Student ||--o{ StudentSpecificRequirement: "can have"
     Student ||--o{ SchoolClass: "belongs to"
     Student ||--o{ CardDeck: "can access"
-    
+
     CardDeckTemplate ||--o{ CardTemplate: "contains"
     CardTemplate ||--|| ActivityType: "is of"
     CardTemplate ||--o{ Card: "defines"
-    
+
     CardDeckProgress ||--o{ CardAnswer: "has"
-    
+
     Subject ||--o{ Topic: "has"
-    
+
 
     Card ||--|{ Subject: "has"
     Card ||--|| ActivityType: "is of"
