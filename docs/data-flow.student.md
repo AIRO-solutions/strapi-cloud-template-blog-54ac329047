@@ -60,8 +60,8 @@ sequenceDiagram
             Note over S, DB: Deck End Reached,
             StrapiCustom-->>DB: set studentState=completed <br>on CardDeckProgress<br>deck is now read-only
             StrapiCustom-->>S: Deck completion confirmation
-            IntegrationLayer -->> N8N:Send student answers for assessment 
-            N8N -->> LLM:Send student answers for assessment 
+            IntegrationLayer -->> N8N:Send student answers for assessment
+            N8N -->> LLM:Send student answers for assessment
             LLM -->> N8N: Student answer assessment
             N8N -->> IntegrationLayer: process and store assessment
         end
