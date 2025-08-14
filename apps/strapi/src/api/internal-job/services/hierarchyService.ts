@@ -1,5 +1,6 @@
 import { Data } from "@strapi/strapi"
-import { ROOT_PAGE_PATH } from "@repo/shared-data"
+
+// import { ROOT_PAGE_PATH } from "@repo/shared-data"
 
 export const hierarchyService = {
   async RECALCULATE_FULLPATH({
@@ -82,5 +83,7 @@ const joinPaths = (...paths: Array<string | undefined | null>) => {
     .filter(Boolean)
     .join("/")
 
-  return `${ROOT_PAGE_PATH}${joinedPath}`
+  return joinedPath
+
+  // return `${ROOT_PAGE_PATH}${joinedPath}`
 }

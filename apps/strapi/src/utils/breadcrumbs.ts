@@ -1,5 +1,6 @@
 import { Data } from "@strapi/strapi"
-import { ROOT_PAGE_PATH } from "@repo/shared-data"
+
+// import { ROOT_PAGE_PATH } from "@repo/shared-data"
 
 type Document = Data.ContentType<"api::page.page">
 
@@ -21,7 +22,7 @@ export const generateBreadcrumbs = async (
   // Get all parents based on the fullPath
   const allSegments = document.fullPath.split("/").filter(Boolean)
   // Ensure the first segment is the root page path
-  allSegments.unshift(ROOT_PAGE_PATH)
+  // allSegments.unshift(ROOT_PAGE_PATH)
   // Remove the last segment to get the parent segments
   const parents = allSegments.slice(0, -1)
 
