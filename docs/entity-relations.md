@@ -194,7 +194,7 @@ erDiagram
     Student ||--|{ Enrollment: "has"
     Enrollment }|--|| SchoolClass: "has"
     Student ||--o{ StudentSpecificRequirement: "can have"
-    
+
     Student ||--o{ CardDeck: "can access"
 
     CardDeckTemplate ||--o{ CardTemplate: "contains"
