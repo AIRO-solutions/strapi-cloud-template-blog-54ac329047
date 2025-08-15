@@ -39,16 +39,55 @@ erDiagram
     School {
         string name
         bigint schoolcode
+    }
 
+    Licence {
+        bigint schoolId FK
+        timestamp validFrom
+        timestamp suspendedAt
+        timestamp deletedAt
+    }
+
+    Enrollment {
+        bigint studentId FK
+        bigint classId  FK
+        date enrollmentDate
     }
 
     SchoolClass {
+        string className
+        bigint schoolId FK
+        bigint teacherId FK
+        bigint gradeId FK
+        bigint projectId FK
+        int schoolYear
+    }
 
+    Grade {
+        string name
+    }
+
+    Project {
+        bigint teacherId
+        bigint subjectId
+        bigint gradeId
+        bigint deckId
+        string name
+        string description
+        boolean bestPractice
+    }
+
+    ProjectType {
+        enum projectType "??"
+        string name
     }
 
 
     CardDeck {
-
+        bigint subjectId FK
+        bigint topicId FK
+        string title
+        string description
     }
 
     CardDeckProgress {
@@ -93,14 +132,36 @@ erDiagram
 
     ActivityType {
         enum type "TextInput|Simulation|Voting"
+        string name
     }
 
     Subject{
-
+        bigint teacherId FK
+        bigint deckId FK
+        string name
     }
 
     Topic{
+        bigint subjectId FK
+        bigint gradeId FK
+        bigint curriculumID FK
+        string name
+    }
 
+    Curriculum {
+        string outcome
+        string keywords
+    }
+
+    Badge {
+        string name
+        string description
+    }
+
+    UserBadge {
+        bigint userId FK
+        bigint badgeId FK
+        timestamp earnedAt
     }
 
 
@@ -112,15 +173,28 @@ erDiagram
 
     Teacher ||--o{ CardDeck : "owns, creates, deletes"
     Teacher ||--o{ SchoolClass: "belongs to"
+    Teacher ||--o{ Subject: "belongs to"
+    Teacher ||--o{ Project: "belongs to"
 
 
     SchoolClass ||--o| School: "belongs to"
+    School ||--|{ Licence: "has"
+    SchoolClass ||--|{ Grade: "has"
+    SchoolClass ||--|{ Project: "has"
+
+    Project ||--|| ProjectType: "is of"
+    Project ||--|| Subject: "is of"
+    Project ||--|{ CardDeck: "has"
+    Project ||--|{ Grade: "has"
 
     CardDeck ||--o{ Card: "contains"
-    CardDeck ||--o{ Subject: "belongs to"
+    CardDeck ||--|| Subject: "belongs to"
+    CardDeck ||--|| Topic: "has"
 
+    Student ||--|{ Enrollment: "has"
+    Enrollment }|--|| SchoolClass: "has"
     Student ||--o{ StudentSpecificRequirement: "can have"
-    Student ||--o{ SchoolClass: "belongs to"
+    
     Student ||--o{ CardDeck: "can access"
 
     CardDeckTemplate ||--o{ CardTemplate: "contains"
@@ -131,10 +205,17 @@ erDiagram
 
     Subject ||--o{ Topic: "has"
 
+    Topic ||--|| Grade: "has"
+
+    Curriculum ||--o{ Topic: "has"
+
 
     Card ||--|{ Subject: "has"
     Card ||--|| ActivityType: "is of"
 
     User ||--|{ UserRole : "has"
     User ||--o{ School : "belongs to"
+
+    Badge ||--|{ UserBadge: "has"
+    User ||--|{ UserBadge: "has"
 ```
