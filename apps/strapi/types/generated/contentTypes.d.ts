@@ -369,6 +369,187 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   }
 }
 
+export interface ApiActivityTypeActivityType
+  extends Struct.CollectionTypeSchema {
+  collectionName: "activity_types"
+  info: {
+    description: ""
+    displayName: "ActivityType"
+    pluralName: "activity-types"
+    singularName: "activity-type"
+  }
+  options: {
+    draftAndPublish: true
+  }
+  attributes: {
+    createdAt: Schema.Attribute.DateTime
+    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private
+    locale: Schema.Attribute.String & Schema.Attribute.Private
+    localizations: Schema.Attribute.Relation<
+      "oneToMany",
+      "api::activity-type.activity-type"
+    > &
+      Schema.Attribute.Private
+    publishedAt: Schema.Attribute.DateTime
+    type: Schema.Attribute.String
+    updatedAt: Schema.Attribute.DateTime
+    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private
+  }
+}
+
+export interface ApiCardAnswerCardAnswer extends Struct.CollectionTypeSchema {
+  collectionName: "card_answers"
+  info: {
+    description: ""
+    displayName: "CardAnswer"
+    pluralName: "card-answers"
+    singularName: "card-answer"
+  }
+  options: {
+    draftAndPublish: true
+  }
+  attributes: {
+    answer: Schema.Attribute.Text
+    assessmentApproved: Schema.Attribute.Boolean
+    card: Schema.Attribute.Relation<"oneToOne", "api::card.card">
+    card_deck_progress: Schema.Attribute.Relation<
+      "manyToOne",
+      "api::card-deck-progress.card-deck-progress"
+    >
+    createdAt: Schema.Attribute.DateTime
+    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private
+    llmAssesment: Schema.Attribute.Text
+    locale: Schema.Attribute.String & Schema.Attribute.Private
+    localizations: Schema.Attribute.Relation<
+      "oneToMany",
+      "api::card-answer.card-answer"
+    > &
+      Schema.Attribute.Private
+    publishedAt: Schema.Attribute.DateTime
+    updatedAt: Schema.Attribute.DateTime
+    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private
+  }
+}
+
+export interface ApiCardDeckProgressCardDeckProgress
+  extends Struct.CollectionTypeSchema {
+  collectionName: "card_deck_progresses"
+  info: {
+    description: ""
+    displayName: "CardDeckProgress"
+    pluralName: "card-deck-progresses"
+    singularName: "card-deck-progress"
+  }
+  options: {
+    draftAndPublish: true
+  }
+  attributes: {
+    card_answers: Schema.Attribute.Relation<
+      "oneToMany",
+      "api::card-answer.card-answer"
+    >
+    card_deck: Schema.Attribute.Relation<
+      "manyToOne",
+      "api::card-deck.card-deck"
+    >
+    createdAt: Schema.Attribute.DateTime
+    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private
+    current_card: Schema.Attribute.Relation<"oneToOne", "api::card.card">
+    locale: Schema.Attribute.String & Schema.Attribute.Private
+    localizations: Schema.Attribute.Relation<
+      "oneToMany",
+      "api::card-deck-progress.card-deck-progress"
+    > &
+      Schema.Attribute.Private
+    publishedAt: Schema.Attribute.DateTime
+    student: Schema.Attribute.Relation<"manyToOne", "api::student.student">
+    studentState: Schema.Attribute.Enumeration<
+      ["idle", "in-progress", "completed"]
+    >
+    teacherState: Schema.Attribute.Enumeration<
+      ["in-review", "assesment-confirmed"]
+    >
+    updatedAt: Schema.Attribute.DateTime
+    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private
+  }
+}
+
+export interface ApiCardDeckCardDeck extends Struct.CollectionTypeSchema {
+  collectionName: "card_decks"
+  info: {
+    description: ""
+    displayName: "CardDeck"
+    pluralName: "card-decks"
+    singularName: "card-deck"
+  }
+  options: {
+    draftAndPublish: true
+  }
+  attributes: {
+    card_deck_progresses: Schema.Attribute.Relation<
+      "oneToMany",
+      "api::card-deck-progress.card-deck-progress"
+    >
+    cards: Schema.Attribute.Relation<"oneToMany", "api::card.card">
+    createdAt: Schema.Attribute.DateTime
+    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private
+    locale: Schema.Attribute.String & Schema.Attribute.Private
+    localizations: Schema.Attribute.Relation<
+      "oneToMany",
+      "api::card-deck.card-deck"
+    > &
+      Schema.Attribute.Private
+    publishedAt: Schema.Attribute.DateTime
+    topic: Schema.Attribute.Relation<"manyToOne", "api::topic.topic">
+    updatedAt: Schema.Attribute.DateTime
+    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private
+  }
+}
+
+export interface ApiCardCard extends Struct.CollectionTypeSchema {
+  collectionName: "cards"
+  info: {
+    description: ""
+    displayName: "Card"
+    pluralName: "cards"
+    singularName: "card"
+  }
+  options: {
+    draftAndPublish: true
+  }
+  attributes: {
+    activity_type: Schema.Attribute.Relation<
+      "oneToOne",
+      "api::activity-type.activity-type"
+    >
+    assessmentAIPrompt: Schema.Attribute.Text
+    card_deck: Schema.Attribute.Relation<
+      "manyToOne",
+      "api::card-deck.card-deck"
+    >
+    createdAt: Schema.Attribute.DateTime
+    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private
+    deckPosition: Schema.Attribute.Integer
+    decription: Schema.Attribute.Text
+    locale: Schema.Attribute.String & Schema.Attribute.Private
+    localizations: Schema.Attribute.Relation<"oneToMany", "api::card.card"> &
+      Schema.Attribute.Private
+    publishedAt: Schema.Attribute.DateTime
+    updatedAt: Schema.Attribute.DateTime
+    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private
+  }
+}
+
 export interface ApiClassClass extends Struct.CollectionTypeSchema {
   collectionName: "classes"
   info: {
@@ -720,6 +901,10 @@ export interface ApiStudentStudent extends Struct.CollectionTypeSchema {
     draftAndPublish: true
   }
   attributes: {
+    card_deck_progresses: Schema.Attribute.Relation<
+      "oneToMany",
+      "api::card-deck-progress.card-deck-progress"
+    >
     class: Schema.Attribute.Relation<"manyToOne", "api::class.class">
     createdAt: Schema.Attribute.DateTime
     createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
@@ -739,6 +924,35 @@ export interface ApiStudentStudent extends Struct.CollectionTypeSchema {
       "oneToMany",
       "api::studen-specific-requirement.studen-specific-requirement"
     >
+    updatedAt: Schema.Attribute.DateTime
+    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private
+  }
+}
+
+export interface ApiSubjectSubject extends Struct.CollectionTypeSchema {
+  collectionName: "subjects"
+  info: {
+    displayName: "Subject"
+    pluralName: "subjects"
+    singularName: "subject"
+  }
+  options: {
+    draftAndPublish: true
+  }
+  attributes: {
+    createdAt: Schema.Attribute.DateTime
+    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private
+    locale: Schema.Attribute.String & Schema.Attribute.Private
+    localizations: Schema.Attribute.Relation<
+      "oneToMany",
+      "api::subject.subject"
+    > &
+      Schema.Attribute.Private
+    name: Schema.Attribute.String
+    publishedAt: Schema.Attribute.DateTime
+    topics: Schema.Attribute.Relation<"oneToMany", "api::topic.topic">
     updatedAt: Schema.Attribute.DateTime
     updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private
@@ -769,6 +983,37 @@ export interface ApiSubscriberSubscriber extends Struct.CollectionTypeSchema {
     message: Schema.Attribute.Text
     name: Schema.Attribute.String
     publishedAt: Schema.Attribute.DateTime
+    updatedAt: Schema.Attribute.DateTime
+    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private
+  }
+}
+
+export interface ApiTopicTopic extends Struct.CollectionTypeSchema {
+  collectionName: "topics"
+  info: {
+    description: ""
+    displayName: "Topic"
+    pluralName: "topics"
+    singularName: "topic"
+  }
+  options: {
+    draftAndPublish: true
+  }
+  attributes: {
+    card_decks: Schema.Attribute.Relation<
+      "oneToMany",
+      "api::card-deck.card-deck"
+    >
+    createdAt: Schema.Attribute.DateTime
+    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private
+    locale: Schema.Attribute.String & Schema.Attribute.Private
+    localizations: Schema.Attribute.Relation<"oneToMany", "api::topic.topic"> &
+      Schema.Attribute.Private
+    name: Schema.Attribute.String
+    publishedAt: Schema.Attribute.DateTime
+    subject: Schema.Attribute.Relation<"manyToOne", "api::subject.subject">
     updatedAt: Schema.Attribute.DateTime
     updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private
@@ -1284,6 +1529,11 @@ declare module "@strapi/strapi" {
       "admin::transfer-token": AdminTransferToken
       "admin::transfer-token-permission": AdminTransferTokenPermission
       "admin::user": AdminUser
+      "api::activity-type.activity-type": ApiActivityTypeActivityType
+      "api::card-answer.card-answer": ApiCardAnswerCardAnswer
+      "api::card-deck-progress.card-deck-progress": ApiCardDeckProgressCardDeckProgress
+      "api::card-deck.card-deck": ApiCardDeckCardDeck
+      "api::card.card": ApiCardCard
       "api::class.class": ApiClassClass
       "api::footer.footer": ApiFooterFooter
       "api::internal-job.internal-job": ApiInternalJobInternalJob
@@ -1293,7 +1543,9 @@ declare module "@strapi/strapi" {
       "api::school.school": ApiSchoolSchool
       "api::studen-specific-requirement.studen-specific-requirement": ApiStudenSpecificRequirementStudenSpecificRequirement
       "api::student.student": ApiStudentStudent
+      "api::subject.subject": ApiSubjectSubject
       "api::subscriber.subscriber": ApiSubscriberSubscriber
+      "api::topic.topic": ApiTopicTopic
       "plugin::content-releases.release": PluginContentReleasesRelease
       "plugin::content-releases.release-action": PluginContentReleasesReleaseAction
       "plugin::i18n.locale": PluginI18NLocale

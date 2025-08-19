@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "card_decks",
+  "info": {
+    "singularName": "card-deck",
+    "pluralName": "card-decks",
+    "displayName": "CardDeck",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "cards": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::card.card",
+      "mappedBy": "card_deck"
+    },
+    "topic": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::topic.topic",
+      "inversedBy": "card_decks"
+    },
+    "card_deck_progresses": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::card-deck-progress.card-deck-progress",
+      "mappedBy": "card_deck"
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "kind": "collectionType",
+  "collectionName": "card_deck_progresses",
+  "info": {
+    "singularName": "card-deck-progress",
+    "pluralName": "card-deck-progresses",
+    "displayName": "CardDeckProgress",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "studentState": {
+      "type": "enumeration",
+      "enum": [
+        "idle",
+        "in-progress",
+        "completed"
+      ]
+    },
+    "teacherState": {
+      "type": "enumeration",
+      "enum": [
+        "in-review",
+        "assesment-confirmed"
+      ]
+    },
+    "student": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::student.student",
+      "inversedBy": "card_deck_progresses"
+    },
+    "card_deck": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::card-deck.card-deck",
+      "inversedBy": "card_deck_progresses"
+    },
+    "current_card": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::card.card"
+    },
+    "card_answers": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::card-answer.card-answer",
+      "mappedBy": "card_deck_progress"
+    }
+  }
+}

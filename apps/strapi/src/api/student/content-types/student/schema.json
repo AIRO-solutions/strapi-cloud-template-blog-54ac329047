@@ -36,6 +36,12 @@
       "relation": "manyToOne",
       "target": "api::class.class",
       "inversedBy": "students"
+    },
+    "card_deck_progresses": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::card-deck-progress.card-deck-progress",
+      "mappedBy": "student"
     }
   }
 }
