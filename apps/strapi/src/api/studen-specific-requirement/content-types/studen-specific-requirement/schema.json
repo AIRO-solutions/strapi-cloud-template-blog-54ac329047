@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "studen_specific_requirements",
+  "info": {
+    "singularName": "studen-specific-requirement",
+    "pluralName": "studen-specific-requirements",
+    "displayName": "StudenSpecificRequirement"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "type": {
+      "type": "string",
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "configuration": {
+      "type": "json"
+    }
+  }
+}

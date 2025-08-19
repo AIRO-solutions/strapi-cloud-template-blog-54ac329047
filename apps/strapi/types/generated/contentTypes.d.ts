@@ -369,6 +369,33 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   }
 }
 
+export interface ApiClassClass extends Struct.CollectionTypeSchema {
+  collectionName: "classes"
+  info: {
+    description: ""
+    displayName: "Class"
+    pluralName: "classes"
+    singularName: "class"
+  }
+  options: {
+    draftAndPublish: true
+  }
+  attributes: {
+    createdAt: Schema.Attribute.DateTime
+    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private
+    locale: Schema.Attribute.String & Schema.Attribute.Private
+    localizations: Schema.Attribute.Relation<"oneToMany", "api::class.class"> &
+      Schema.Attribute.Private
+    publishedAt: Schema.Attribute.DateTime
+    school: Schema.Attribute.Relation<"manyToOne", "api::school.school">
+    students: Schema.Attribute.Relation<"oneToMany", "api::student.student">
+    updatedAt: Schema.Attribute.DateTime
+    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private
+  }
+}
+
 export interface ApiFooterFooter extends Struct.SingleTypeSchema {
   collectionName: "footers"
   info: {
@@ -609,6 +636,109 @@ export interface ApiRedirectRedirect extends Struct.CollectionTypeSchema {
     permanent: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
     publishedAt: Schema.Attribute.DateTime
     source: Schema.Attribute.String & Schema.Attribute.Required
+    updatedAt: Schema.Attribute.DateTime
+    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private
+  }
+}
+
+export interface ApiSchoolSchool extends Struct.CollectionTypeSchema {
+  collectionName: "schools"
+  info: {
+    description: ""
+    displayName: "School"
+    pluralName: "schools"
+    singularName: "school"
+  }
+  options: {
+    draftAndPublish: true
+  }
+  attributes: {
+    classes: Schema.Attribute.Relation<"oneToMany", "api::class.class">
+    createdAt: Schema.Attribute.DateTime
+    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private
+    locale: Schema.Attribute.String & Schema.Attribute.Private
+    localizations: Schema.Attribute.Relation<
+      "oneToMany",
+      "api::school.school"
+    > &
+      Schema.Attribute.Private
+    name: Schema.Attribute.String & Schema.Attribute.Required
+    publishedAt: Schema.Attribute.DateTime
+    schoolCode: Schema.Attribute.BigInteger & Schema.Attribute.Required
+    updatedAt: Schema.Attribute.DateTime
+    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private
+    users: Schema.Attribute.Relation<
+      "oneToMany",
+      "plugin::users-permissions.user"
+    >
+  }
+}
+
+export interface ApiStudenSpecificRequirementStudenSpecificRequirement
+  extends Struct.CollectionTypeSchema {
+  collectionName: "studen_specific_requirements"
+  info: {
+    displayName: "StudenSpecificRequirement"
+    pluralName: "studen-specific-requirements"
+    singularName: "studen-specific-requirement"
+  }
+  options: {
+    draftAndPublish: true
+  }
+  attributes: {
+    configuration: Schema.Attribute.JSON
+    createdAt: Schema.Attribute.DateTime
+    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private
+    locale: Schema.Attribute.String & Schema.Attribute.Private
+    localizations: Schema.Attribute.Relation<
+      "oneToMany",
+      "api::studen-specific-requirement.studen-specific-requirement"
+    > &
+      Schema.Attribute.Private
+    name: Schema.Attribute.String & Schema.Attribute.Required
+    publishedAt: Schema.Attribute.DateTime
+    type: Schema.Attribute.String & Schema.Attribute.Required
+    updatedAt: Schema.Attribute.DateTime
+    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private
+  }
+}
+
+export interface ApiStudentStudent extends Struct.CollectionTypeSchema {
+  collectionName: "students"
+  info: {
+    description: ""
+    displayName: "Student"
+    pluralName: "students"
+    singularName: "student"
+  }
+  options: {
+    draftAndPublish: true
+  }
+  attributes: {
+    class: Schema.Attribute.Relation<"manyToOne", "api::class.class">
+    createdAt: Schema.Attribute.DateTime
+    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private
+    email: Schema.Attribute.Email & Schema.Attribute.Required
+    firstName: Schema.Attribute.String & Schema.Attribute.Required
+    lastName: Schema.Attribute.String & Schema.Attribute.Required
+    locale: Schema.Attribute.String & Schema.Attribute.Private
+    localizations: Schema.Attribute.Relation<
+      "oneToMany",
+      "api::student.student"
+    > &
+      Schema.Attribute.Private
+    loginCode: Schema.Attribute.String
+    publishedAt: Schema.Attribute.DateTime
+    studen_specific_requirements: Schema.Attribute.Relation<
+      "oneToMany",
+      "api::studen-specific-requirement.studen-specific-requirement"
+    >
     updatedAt: Schema.Attribute.DateTime
     updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private
@@ -1100,7 +1230,6 @@ export interface PluginUsersPermissionsUser
   }
   options: {
     draftAndPublish: false
-    timestamps: true
   }
   attributes: {
     blocked: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
@@ -1132,6 +1261,7 @@ export interface PluginUsersPermissionsUser
       "manyToOne",
       "plugin::users-permissions.role"
     >
+    school: Schema.Attribute.Relation<"manyToOne", "api::school.school">
     updatedAt: Schema.Attribute.DateTime
     updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private
@@ -1154,11 +1284,15 @@ declare module "@strapi/strapi" {
       "admin::transfer-token": AdminTransferToken
       "admin::transfer-token-permission": AdminTransferTokenPermission
       "admin::user": AdminUser
+      "api::class.class": ApiClassClass
       "api::footer.footer": ApiFooterFooter
       "api::internal-job.internal-job": ApiInternalJobInternalJob
       "api::navbar.navbar": ApiNavbarNavbar
       "api::page.page": ApiPagePage
       "api::redirect.redirect": ApiRedirectRedirect
+      "api::school.school": ApiSchoolSchool
+      "api::studen-specific-requirement.studen-specific-requirement": ApiStudenSpecificRequirementStudenSpecificRequirement
+      "api::student.student": ApiStudentStudent
       "api::subscriber.subscriber": ApiSubscriberSubscriber
       "plugin::content-releases.release": PluginContentReleasesRelease
       "plugin::content-releases.release-action": PluginContentReleasesReleaseAction
