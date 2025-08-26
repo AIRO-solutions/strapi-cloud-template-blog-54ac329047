@@ -8,7 +8,7 @@ export const createSchoolAccessCondition = (strapi: Core.Strapi) => ({
   plugin: "admin",
   handler(user: RbacConditionUser) {
     if (user.permission.subject !== "api::school.school") {
-      return true
+      throw new Error("Can access school condition added to incorrect type")
     }
 
     return { id: { $gt: 0 } }
