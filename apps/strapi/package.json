@@ -51,9 +51,11 @@
     "styled-components": "^6.0.0"
   },
   "devDependencies": {
+    "@types/jest": "^30.0.0",
     "@types/node": "^22",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "jest": "^30.0.5",
     "typescript": "^5"
   },
   "engines": {
