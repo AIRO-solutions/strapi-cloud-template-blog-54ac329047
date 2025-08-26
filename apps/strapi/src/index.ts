@@ -3,6 +3,7 @@ import type { Core } from "@strapi/strapi"
 import { registerPopulatePageMiddleware } from "./documentMiddlewares/page"
 import { registerAdminUserSubscriber } from "./lifeCycles/adminUser"
 import { registerUserSubscriber } from "./lifeCycles/user"
+import { registerRbacConditions } from "./rbac/conditions"
 
 export default {
   /**
@@ -20,10 +21,12 @@ export default {
    * This gives you an opportunity to set up your data model,
    * run jobs, or perform some special logic.
    */
-  bootstrap({ strapi }: { strapi: Core.Strapi }) {
+  async bootstrap({ strapi }: { strapi: Core.Strapi }) {
     registerAdminUserSubscriber({ strapi })
     registerUserSubscriber({ strapi })
 
     registerPopulatePageMiddleware({ strapi })
+
+    await registerRbacConditions({ strapi })
   },
 }
