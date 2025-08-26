@@ -22,14 +22,6 @@
     "test": "jest --forceExit --detectOpenHandles",
     "transfer": "strapi transfer"
   },
-  "jest": {
-    "testEnvironment": "node",
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      ".tmp",
-      ".cache"
-    ]
-  },
   "dependencies": {
     "@_sh/strapi-plugin-ckeditor": "^6.0.2",
     "@repo/design-system": "*",
@@ -56,6 +48,7 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "jest": "^30.0.5",
+    "ts-jest": "^29.4.1",
     "typescript": "^5"
   },
   "engines": {
