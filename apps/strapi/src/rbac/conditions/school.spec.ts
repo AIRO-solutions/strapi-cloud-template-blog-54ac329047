@@ -1,7 +1,7 @@
 import type { Core } from "@strapi/strapi"
 
 import { createSchoolAccessCondition } from "./school"
-import { RbacConditionUser } from "./types"
+import { RbacConditionUser } from "./util/types"
 
 describe("createSchoolAccessCondition", () => {
   describe("handler", () => {
@@ -11,28 +11,28 @@ describe("createSchoolAccessCondition", () => {
       condition = createSchoolAccessCondition({} as Core.Strapi)
     })
 
-    it("handler returns true if subject is not school", () => {
-      const user: RbacConditionUser = {
+    it("handler throws if subject is not school", () => {
+      const user = {
+        id: 1,
         permission: {
-          actionParameters: {},
-          conditions: [],
           subject: "api::card.card",
         },
-      }
+      } as RbacConditionUser
 
       expect(() => condition.handler(user)).toThrow()
     })
 
-    it("handler returns correct query object for user that should have access", () => {
-      const user: RbacConditionUser = {
+    it("handler returns correct query object", () => {
+      const user = {
+        id: 123,
         permission: {
-          actionParameters: {},
-          conditions: [],
           subject: "api::school.school",
         },
-      }
+      } as RbacConditionUser
 
-      expect(condition.handler(user)).toStrictEqual({ id: { $gt: 0 } })
+      expect(condition.handler(user)).toStrictEqual({
+        "administrators.id": 123,
+      })
     })
   })
 })
