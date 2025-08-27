@@ -137,7 +137,9 @@
     "layouts": {
       "list": [
         "id",
-        "logoImage"
+        "sections",
+        "links",
+        "copyRight"
       ],
       "edit": [
         [

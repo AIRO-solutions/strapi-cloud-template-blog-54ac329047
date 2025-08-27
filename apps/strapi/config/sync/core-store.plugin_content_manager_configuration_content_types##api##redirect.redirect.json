@@ -5,10 +5,10 @@
       "bulkable": true,
       "filterable": true,
       "searchable": true,
-      "pageSize": 20,
+      "pageSize": 10,
       "mainField": "source",
-      "defaultSortBy": "id",
-      "defaultSortOrder": "DESC"
+      "defaultSortBy": "source",
+      "defaultSortOrder": "ASC"
     },
     "metadatas": {
       "id": {
@@ -136,6 +136,12 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "source",
+        "destination",
+        "permanent"
+      ],
       "edit": [
         [
           {
@@ -157,13 +163,6 @@
             "size": 6
           }
         ]
-      ],
-      "list": [
-        "id",
-        "source",
-        "destination",
-        "permanent",
-        "createdAt"
       ]
     },
     "uid": "api::redirect.redirect"

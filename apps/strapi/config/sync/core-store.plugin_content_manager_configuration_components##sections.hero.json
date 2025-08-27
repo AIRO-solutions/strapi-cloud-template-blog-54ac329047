@@ -124,6 +124,12 @@
         ],
         [
           {
+            "name": "links",
+            "size": 12
+          }
+        ],
+        [
+          {
             "name": "image",
             "size": 12
           }
@@ -132,12 +138,6 @@
           {
             "name": "bgColor",
             "size": 6
-          }
-        ],
-        [
-          {
-            "name": "links",
-            "size": 12
           }
         ],
         [

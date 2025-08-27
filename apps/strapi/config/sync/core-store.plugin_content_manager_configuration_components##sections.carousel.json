@@ -57,14 +57,14 @@
       "edit": [
         [
           {
-            "name": "radius",
-            "size": 6
+            "name": "images",
+            "size": 12
           }
         ],
         [
           {
-            "name": "images",
-            "size": 12
+            "name": "radius",
+            "size": 6
           }
         ]
       ]

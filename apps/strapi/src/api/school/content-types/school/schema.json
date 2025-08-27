@@ -30,6 +30,11 @@
       "relation": "oneToMany",
       "target": "plugin::users-permissions.user",
       "mappedBy": "school"
+    },
+    "administrators": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "admin::user"
     }
   }
 }

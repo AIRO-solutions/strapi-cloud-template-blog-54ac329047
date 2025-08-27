@@ -48,6 +48,17 @@ export interface SectionsAnimatedLogoRow extends Struct.ComponentSchema {
   }
 }
 
+export interface SectionsCardDeckCard extends Struct.ComponentSchema {
+  collectionName: "components_sections_card_deck_cards"
+  info: {
+    displayName: "Card Deck Card"
+  }
+  attributes: {
+    card: Schema.Attribute.Relation<"oneToOne", "api::card.card">
+    deckPosisiton: Schema.Attribute.Integer
+  }
+}
+
 export interface SectionsCarousel extends Struct.ComponentSchema {
   collectionName: "components_sections_carousels"
   info: {
@@ -345,6 +356,7 @@ declare module "@strapi/strapi" {
       "forms.contact-form": FormsContactForm
       "forms.newsletter-form": FormsNewsletterForm
       "sections.animated-logo-row": SectionsAnimatedLogoRow
+      "sections.card-deck-card": SectionsCardDeckCard
       "sections.carousel": SectionsCarousel
       "sections.faq": SectionsFaq
       "sections.heading-with-cta-button": SectionsHeadingWithCtaButton

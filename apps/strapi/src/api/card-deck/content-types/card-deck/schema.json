@@ -28,6 +28,11 @@
       "relation": "oneToMany",
       "target": "api::card-deck-progress.card-deck-progress",
       "mappedBy": "card_deck"
+    },
+    "school": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::school.school"
     }
   }
 }

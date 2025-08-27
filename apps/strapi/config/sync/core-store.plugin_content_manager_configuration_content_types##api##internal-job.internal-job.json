@@ -6,9 +6,9 @@
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "error",
-      "defaultSortBy": "createdAt",
-      "defaultSortOrder": "DESC"
+      "mainField": "relatedDocumentId",
+      "defaultSortBy": "relatedDocumentId",
+      "defaultSortOrder": "ASC"
     },
     "metadatas": {
       "id": {
@@ -149,7 +149,23 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "jobType",
+        "relatedDocumentId",
+        "state"
+      ],
       "edit": [
+        [
+          {
+            "name": "jobType",
+            "size": 6
+          },
+          {
+            "name": "relatedDocumentId",
+            "size": 6
+          }
+        ],
         [
           {
             "name": "payload",
@@ -165,24 +181,7 @@
             "name": "error",
             "size": 6
           }
-        ],
-        [
-          {
-            "name": "jobType",
-            "size": 6
-          },
-          {
-            "name": "relatedDocumentId",
-            "size": 6
-          }
         ]
-      ],
-      "list": [
-        "id",
-        "jobType",
-        "state",
-        "relatedDocumentId",
-        "createdAt"
       ]
     },
     "uid": "api::internal-job.internal-job"

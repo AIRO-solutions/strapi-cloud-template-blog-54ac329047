@@ -392,6 +392,7 @@ export interface ApiActivityTypeActivityType
     > &
       Schema.Attribute.Private
     publishedAt: Schema.Attribute.DateTime
+    school: Schema.Attribute.Relation<"oneToOne", "api::school.school">
     type: Schema.Attribute.String
     updatedAt: Schema.Attribute.DateTime
     updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
@@ -429,6 +430,7 @@ export interface ApiCardAnswerCardAnswer extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private
     publishedAt: Schema.Attribute.DateTime
+    school: Schema.Attribute.Relation<"oneToOne", "api::school.school">
     updatedAt: Schema.Attribute.DateTime
     updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private
@@ -467,6 +469,7 @@ export interface ApiCardDeckProgressCardDeckProgress
     > &
       Schema.Attribute.Private
     publishedAt: Schema.Attribute.DateTime
+    school: Schema.Attribute.Relation<"oneToOne", "api::school.school">
     student: Schema.Attribute.Relation<"manyToOne", "api::student.student">
     studentState: Schema.Attribute.Enumeration<
       ["idle", "in-progress", "completed"]
@@ -507,6 +510,7 @@ export interface ApiCardDeckCardDeck extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private
     publishedAt: Schema.Attribute.DateTime
+    school: Schema.Attribute.Relation<"oneToOne", "api::school.school">
     topic: Schema.Attribute.Relation<"manyToOne", "api::topic.topic">
     updatedAt: Schema.Attribute.DateTime
     updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
@@ -544,6 +548,7 @@ export interface ApiCardCard extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<"oneToMany", "api::card.card"> &
       Schema.Attribute.Private
     publishedAt: Schema.Attribute.DateTime
+    school: Schema.Attribute.Relation<"oneToOne", "api::school.school">
     updatedAt: Schema.Attribute.DateTime
     updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private
@@ -835,6 +840,7 @@ export interface ApiSchoolSchool extends Struct.CollectionTypeSchema {
     draftAndPublish: true
   }
   attributes: {
+    administrators: Schema.Attribute.Relation<"oneToMany", "admin::user">
     classes: Schema.Attribute.Relation<"oneToMany", "api::class.class">
     createdAt: Schema.Attribute.DateTime
     createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
@@ -862,6 +868,7 @@ export interface ApiStudenSpecificRequirementStudenSpecificRequirement
   extends Struct.CollectionTypeSchema {
   collectionName: "studen_specific_requirements"
   info: {
+    description: ""
     displayName: "StudenSpecificRequirement"
     pluralName: "studen-specific-requirements"
     singularName: "studen-specific-requirement"
@@ -882,6 +889,7 @@ export interface ApiStudenSpecificRequirementStudenSpecificRequirement
       Schema.Attribute.Private
     name: Schema.Attribute.String & Schema.Attribute.Required
     publishedAt: Schema.Attribute.DateTime
+    school: Schema.Attribute.Relation<"oneToOne", "api::school.school">
     type: Schema.Attribute.String & Schema.Attribute.Required
     updatedAt: Schema.Attribute.DateTime
     updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
@@ -920,6 +928,7 @@ export interface ApiStudentStudent extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private
     loginCode: Schema.Attribute.String
     publishedAt: Schema.Attribute.DateTime
+    school: Schema.Attribute.Relation<"oneToOne", "api::school.school">
     studen_specific_requirements: Schema.Attribute.Relation<
       "oneToMany",
       "api::studen-specific-requirement.studen-specific-requirement"
@@ -933,6 +942,7 @@ export interface ApiStudentStudent extends Struct.CollectionTypeSchema {
 export interface ApiSubjectSubject extends Struct.CollectionTypeSchema {
   collectionName: "subjects"
   info: {
+    description: ""
     displayName: "Subject"
     pluralName: "subjects"
     singularName: "subject"
@@ -952,6 +962,7 @@ export interface ApiSubjectSubject extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private
     name: Schema.Attribute.String
     publishedAt: Schema.Attribute.DateTime
+    school: Schema.Attribute.Relation<"oneToOne", "api::school.school">
     topics: Schema.Attribute.Relation<"oneToMany", "api::topic.topic">
     updatedAt: Schema.Attribute.DateTime
     updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
@@ -1013,6 +1024,7 @@ export interface ApiTopicTopic extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private
     name: Schema.Attribute.String
     publishedAt: Schema.Attribute.DateTime
+    school: Schema.Attribute.Relation<"oneToOne", "api::school.school">
     subject: Schema.Attribute.Relation<"manyToOne", "api::subject.subject">
     updatedAt: Schema.Attribute.DateTime
     updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
