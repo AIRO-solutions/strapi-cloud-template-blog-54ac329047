@@ -1,5 +1,6 @@
 import type { Core } from "@strapi/strapi"
 
+import { registerAssignSchoolOnCreationMiddleware } from "./documentMiddlewares/assign-school-on-creation"
 import { registerPopulatePageMiddleware } from "./documentMiddlewares/page"
 import { registerAdminUserSubscriber } from "./lifeCycles/adminUser"
 import { registerUserSubscriber } from "./lifeCycles/user"
@@ -26,6 +27,7 @@ export default {
     registerUserSubscriber({ strapi })
 
     registerPopulatePageMiddleware({ strapi })
+    registerAssignSchoolOnCreationMiddleware({ strapi })
 
     await registerRbacConditions({ strapi })
   },
