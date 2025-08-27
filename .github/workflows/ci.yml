@@ -55,7 +55,7 @@ jobs:
       - name: yarn lint
         run: yarn lint
   test:
-    name: test
+    name: Test
     timeout-minutes: 15
     runs-on: ubuntu-latest
     steps:
