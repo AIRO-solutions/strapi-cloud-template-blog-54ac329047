@@ -12,6 +12,11 @@ export const relevantContentTypes: UID.ContentType[] = [
   "plugin::users-permissions.user",
 ] as const
 
+/**
+ * To handle school multi-tenancy we need to assign the school to the created document
+ * Easiest way to do this is to use the school the current user is assigned to
+ * @param strapi
+ */
 export const registerAssignSchoolOnCreationMiddleware = ({ strapi }) => {
   strapi.documents.use(async (context, next) => {
     if (
