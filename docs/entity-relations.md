@@ -1,140 +1,156 @@
 ```mermaid
 erDiagram
-    User {
-        string firstName
-        string lastName
-        string email
-        string role
-        bigint schoolId FK
-        string interfacelanguage
+  StrapiAdminUser {
+    string firstName
+    string lastName
+    string username
+    string password
+    string email
+    string role
+  }
 
-    }
+  StrapiAdminUserRole {
+    string type "admin | schoolAdmin"
+  }
 
-    UserRole {
-        string type "admin | teacher | school admin"
-    }
+  User {
+    string name
+    string username
+    string email
+    string password
+    bool confirmed
+    bool blocked
+    UserRole role
+    School school
+  }
 
-    Admin {
+  UserRole {
+    string type "student"
+  }
 
-    }
+  Student {
+    string firstName
+    string lastName
+    string email
+    string loginCode
+    enum specificRequirements
+    User user
+  }
 
-    Student {
-        string firstName
-        string lastName
-        string email
-        string loginCode
-        enum specificRequirements
-    }
+  StudentSpecificRequirement {
+    string type "sightImpaired | hearingImpaired | ..."
+    string name
+    jsonb configuration
+  }
 
+  School {
+    string name
+    bigint schoolcode
+  }
 
-    StudentSpecificRequirement {
-        string type
-        string name
-        jsonb configuration
-    }
+  CardDeck {
+    string name
+    Card[] cards
+    School school
+  }
 
-    Teacher {
-    }
+  CardDeckProgress {
+    string studentId FK
+    string cardDeckId FK
+    string currentCardId FK
+    enum studentState "start|inProgress|completed"
+    enum teacherState "inReview|assessmentConfirmed"
+    bool assesmentConfirmedByTeacher
+  }
 
-    School {
-        string name
-        bigint schoolcode
+  Card {
+    string name
+    string text
+    int deckPosition "PK with id"
+    string activityType FK
+    enum activityType
+    string assessmentAIPrompt
+    string exactAnswerCheck
+    number rangeCheckLowBound
+    number rangeCheckUpperBound
+  }
 
-    }
+  CardQuestion {
+    string name
+    string text
+    string aiAssesmentPrompt
+  }
 
-    SchoolClass {
+  ExactNumericQuestion {
+    float correctAnswer
+  }
 
-    }
+  RangeNumericQuestion {
+    float lowBound
+    float highBound
+  }
 
+  RangeNumericAnswer {
+    float answer
+  }
 
-    CardDeck {
+  ExactStringQuestion {
+    string correctAnswer
+  }
 
-    }
+  ExactStringAnswer {
+    string answer
+  }
 
-    CardDeckProgress {
-        string studentId FK
-        string cardDeckId FK
-        string currentCardId FK
-        string answers "FK Card Answer"
-        enum studentState "start|inProgress|completed"
-        enum teacherState "inReview|assesmentConfirmed"
-        bool assesmentConfirmedByTeacher
-    }
+  MultipleChoiceOption {
+    string name
+    string description
+    bool isCorrect
+  }
 
-    CardAnswer {
-        string studentId FK
-        string cardId FK
-        string inputId FK
-        string answer FK
-        string LLMassesment
-        boolean assessmentApproved
-    }
+  MultipleChoiceQuestion {
+    MultipleChoiceOption[] options
+  }
 
-    CardTemplate {
-        string description
-        int deckPosition
-        enum activityType
-        string assessmentAIPrompt
-        string exactAnswerCheck
-        number rangeCheckLowBound
-        number rangeCheckUpperBound
-    }
-
-    Card {
-        int deckPosition "PK with id"
-        string description
-        string activityType FK
-        enum activityType
-        string assessmentAIPrompt
-        string exactAnswerCheck
-        number rangeCheckLowBound
-        number rangeCheckUpperBound
-    }
-
-    ActivityType {
-        enum type "TextInput|Simulation|Voting"
-    }
-
-    Subject{
-
-    }
-
-    Topic{
-
-    }
-
-
-    User ||--|| UserRole : "has"
-    User ||--o| Teacher : "extends when role is 'teacher'"
-
-    Admin ||--o{ School: "owns"
-    Admin ||--o{ CardTemplate: "creates"
-
-    Teacher ||--o{ CardDeck : "owns, creates, deletes"
-    Teacher ||--o{ SchoolClass: "belongs to"
-
-
-    SchoolClass ||--o| School: "belongs to"
-
-    CardDeck ||--o{ Card: "contains"
-    CardDeck ||--o{ Subject: "belongs to"
-
-    Student ||--o{ StudentSpecificRequirement: "can have"
-    Student ||--o{ SchoolClass: "belongs to"
-    Student ||--o{ CardDeck: "can access"
-
-    CardDeckTemplate ||--o{ CardTemplate: "contains"
-    CardTemplate ||--|| ActivityType: "is of"
-    CardTemplate ||--o{ Card: "defines"
-
-    CardDeckProgress ||--o{ CardAnswer: "has"
-
-    Subject ||--o{ Topic: "has"
+  MultipleChoiceAnswer {
+    MultipleChoiceOption[] selectedOptions
+  }
 
 
-    Card ||--|{ Subject: "has"
-    Card ||--|| ActivityType: "is of"
+  CardQuestionAnswer {
+    string studentId FK
+    string questionId FK
+    string answer FK
+    string LLMassesment
+    boolean assessmentApproved
+  }
 
-    User ||--|{ UserRole : "has"
-    User ||--o{ School : "belongs to"
+  StrapiAdminUser ||--|| StrapiAdminUserRole: "has"
+  StrapiAdminUser ||--o{ School: "owns"
+  CardDeck ||--|| School: "belongs to"
+  CardDeck ||--|| CardDeckProgress: "has"
+  CardDeckProgress }o--|| Student: "has"
+  Card ||--o{ CardDeck: "belongs to"
+  Card ||--|{ CardQuestion: "has"
+  CardQuestion ||--|| ExactNumericQuestion: "can be of type"
+  CardQuestion ||--|| RangeNumericQuestion: "can be of type"
+  CardQuestion ||--|| ExactStringQuestion: "can be of type"
+  CardQuestion ||--|{ MultipleChoiceQuestion: "can be of type"
+  ExactNumericQuestion ||--o| CardQuestionAnswer: "has"
+  RangeNumericQuestion ||--o| CardQuestionAnswer: "has"
+  ExactStringQuestion ||--o| CardQuestionAnswer: "has"
+  MultipleChoiceQuestion ||--o| MultipleChoiceOption: "has"
+  MultipleChoiceQuestion ||--|| CardQuestionAnswer: "has"
+  CardQuestionAnswer ||--|| ExactNumericAnswer: "can be of type"
+  CardQuestionAnswer ||--|| RangeNumericAnswer: "can be of type"
+  CardQuestionAnswer ||--|| ExactStringAnswer: "can be of type"
+  CardQuestionAnswer ||--|| MultipleChoiceAnswer: "can be of type"
+  MultipleChoiceAnswer ||--o{ MultipleChoiceOption: "has"
+  User ||--|| Student: "has"
+  User ||--|| UserRole: "has"
+  Student ||--o{ CardDeck: "can access"
+  Student ||--|| School: "belongs to"
+  Student ||--o{ StudentSpecificRequirement: "has"
+  Student ||--o{ CardQuestion: "answers"
+
 ```
