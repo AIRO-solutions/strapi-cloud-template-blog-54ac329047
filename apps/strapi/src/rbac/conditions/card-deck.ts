@@ -24,6 +24,10 @@ export const createCardDeckAccessCondition = (strapi: Core.Strapi) => ({
       },
     })
 
+    if (!userSchool) {
+      return false
+    }
+
     return { "school.id": userSchool.id }
   },
 })
