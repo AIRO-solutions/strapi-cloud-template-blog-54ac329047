@@ -1,6 +1,6 @@
 import type { Core } from "@strapi/strapi"
 
-import { RbacConditionUser } from "./types"
+import { RbacConditionUser } from "./util/types"
 
 export const createSchoolAccessCondition = (strapi: Core.Strapi) => ({
   displayName: "Can access school",
@@ -11,6 +11,6 @@ export const createSchoolAccessCondition = (strapi: Core.Strapi) => ({
       throw new Error("Can access school condition added to incorrect type")
     }
 
-    return { id: { $gt: 0 } }
+    return { "administrators.id": user.id }
   },
 })
