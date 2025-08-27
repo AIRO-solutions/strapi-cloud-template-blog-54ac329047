@@ -1,11 +1,11 @@
 import type { Core } from "@strapi/strapi"
 
-import { createCardDeckAccessCondition } from "./card-deck"
+import { createCardDeckAccessCondition } from "./school-item"
 import { RbacConditionUser } from "./util/types"
 
-const getMockStrapiObject = (schoolToReturn) => ({
+const getMockStrapiObject = (schoolsToReturn) => ({
   documents: () => ({
-    findFirst: () => schoolToReturn,
+    findMany: () => schoolsToReturn,
   }),
 })
 
@@ -14,17 +14,6 @@ describe("createCardDeckAccessCondition", () => {
     let condition: ReturnType<typeof createCardDeckAccessCondition>
     beforeEach(() => {
       condition = createCardDeckAccessCondition({} as Core.Strapi)
-    })
-
-    it('throws if subject is not "api::card-deck.card-deck"', async () => {
-      const user = {
-        id: 1,
-        permission: {
-          subject: "api::card.card",
-        },
-      } as RbacConditionUser
-
-      await expect(condition.handler(user)).rejects.toThrow()
     })
 
     it("handles admin user", async () => {
@@ -67,9 +56,11 @@ describe("createCardDeckAccessCondition", () => {
 
     it("returns correct query object", async () => {
       condition = createCardDeckAccessCondition(
-        getMockStrapiObject({
-          id: 42,
-        }) as unknown as Core.Strapi
+        getMockStrapiObject([
+          {
+            id: 42,
+          },
+        ]) as unknown as Core.Strapi
       )
       const user = {
         id: 123,
@@ -85,7 +76,36 @@ describe("createCardDeckAccessCondition", () => {
       } as RbacConditionUser
 
       expect(await condition.handler(user)).toStrictEqual({
-        "school.id": 42,
+        "school.id": { $in: [42] },
+      })
+    })
+
+    it("returns correct query object for multiple schools", async () => {
+      condition = createCardDeckAccessCondition(
+        getMockStrapiObject([
+          {
+            id: 42,
+          },
+          {
+            id: 92,
+          },
+        ]) as unknown as Core.Strapi
+      )
+      const user = {
+        id: 123,
+        permission: {
+          subject: "api::card-deck.card-deck",
+        },
+        roles: [
+          {
+            id: 123,
+            code: "school-admin",
+          },
+        ],
+      } as RbacConditionUser
+
+      expect(await condition.handler(user)).toStrictEqual({
+        "school.id": { $in: [42, 92] },
       })
     })
   })

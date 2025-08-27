@@ -3,31 +3,33 @@ import { Core } from "@strapi/strapi"
 import { isUserAdmin } from "./util/check-roles"
 import { RbacConditionUser } from "./util/types"
 
+/**
+ * Handles access to items with the ` school ` field
+ * @param strapi
+ */
 export const createCardDeckAccessCondition = (strapi: Core.Strapi) => ({
-  displayName: "Can access card deck",
-  name: "can-access-card-deck",
+  displayName: "Can access school item",
+  name: "can-access-school-item",
   plugin: "admin",
   async handler(user: RbacConditionUser) {
-    if (user.permission.subject !== "api::card-deck.card-deck") {
-      throw new Error("Can access card deck condition added to incorrect type")
-    }
-
     const isAdmin = isUserAdmin(user.roles)
 
     if (isAdmin) {
       return true
     }
 
-    const userSchool = await strapi.documents("api::school.school").findFirst({
+    const userSchools = await strapi.documents("api::school.school").findMany({
       filters: {
         administrators: { id: user.id },
       },
     })
 
-    if (!userSchool) {
+    if (userSchools == null || userSchools.length === 0) {
       return false
     }
 
-    return { "school.id": userSchool.id }
+    const userSchoolIds = userSchools.map((school) => school.id)
+
+    return { "school.id": { $in: userSchoolIds } }
   },
 })
