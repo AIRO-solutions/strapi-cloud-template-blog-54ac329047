@@ -30,6 +30,11 @@
       "relation": "manyToOne",
       "target": "api::card-deck.card-deck",
       "inversedBy": "cards"
+    },
+    "school": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::school.school"
     }
   }
 }

@@ -13,6 +13,11 @@
   "attributes": {
     "type": {
       "type": "string"
+    },
+    "school": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::school.school"
     }
   }
 }

@@ -48,6 +48,11 @@
       "relation": "oneToMany",
       "target": "api::card-answer.card-answer",
       "mappedBy": "card_deck_progress"
+    },
+    "school": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::school.school"
     }
   }
 }
