@@ -110,7 +110,8 @@
       "list": [
         "id",
         "links",
-        "logoImage"
+        "logoImage",
+        "createdAt"
       ],
       "edit": [
         [
