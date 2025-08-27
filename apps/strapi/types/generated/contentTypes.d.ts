@@ -507,6 +507,7 @@ export interface ApiCardDeckCardDeck extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private
     publishedAt: Schema.Attribute.DateTime
+    school: Schema.Attribute.Relation<"oneToOne", "api::school.school">
     topic: Schema.Attribute.Relation<"manyToOne", "api::topic.topic">
     updatedAt: Schema.Attribute.DateTime
     updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
@@ -835,6 +836,7 @@ export interface ApiSchoolSchool extends Struct.CollectionTypeSchema {
     draftAndPublish: true
   }
   attributes: {
+    administrators: Schema.Attribute.Relation<"oneToMany", "admin::user">
     classes: Schema.Attribute.Relation<"oneToMany", "api::class.class">
     createdAt: Schema.Attribute.DateTime
     createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
