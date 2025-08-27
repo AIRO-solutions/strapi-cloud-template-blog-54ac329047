@@ -2,7 +2,7 @@ import type { UID } from "@strapi/strapi"
 
 export type RbacRole = {
   id: number
-  code: "strapi-admin"
+  code: "strapi-admin" | "school-admin"
 }
 
 export type RbacConditionUser = {
