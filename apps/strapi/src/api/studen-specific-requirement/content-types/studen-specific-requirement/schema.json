@@ -4,7 +4,8 @@
   "info": {
     "singularName": "studen-specific-requirement",
     "pluralName": "studen-specific-requirements",
-    "displayName": "StudenSpecificRequirement"
+    "displayName": "StudenSpecificRequirement",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -20,6 +21,11 @@
     },
     "configuration": {
       "type": "json"
+    },
+    "school": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::school.school"
     }
   }
 }

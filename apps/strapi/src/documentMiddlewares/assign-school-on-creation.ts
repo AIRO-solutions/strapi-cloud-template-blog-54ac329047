@@ -10,6 +10,7 @@ export const relevantContentTypes: UID.ContentType[] = [
   "api::subject.subject",
   "api::topic.topic",
   "plugin::users-permissions.user",
+  "api::studen-specific-requirement.studen-specific-requirement",
 ] as const
 
 /**

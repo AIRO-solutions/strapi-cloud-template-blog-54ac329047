@@ -30,6 +30,11 @@
       "relation": "manyToOne",
       "target": "api::card-deck-progress.card-deck-progress",
       "inversedBy": "card_answers"
+    },
+    "school": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::school.school"
     }
   }
 }
