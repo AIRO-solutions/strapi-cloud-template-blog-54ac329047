@@ -1,6 +1,6 @@
 import type { Core } from "@strapi/strapi"
 
-import { createCardDeckAccessCondition } from "./school-item"
+import { createSchoolItemAccessCondition } from "./school-item"
 import { RbacConditionUser } from "./util/types"
 
 const getMockStrapiObject = (schoolsToReturn) => ({
@@ -11,9 +11,9 @@ const getMockStrapiObject = (schoolsToReturn) => ({
 
 describe("createCardDeckAccessCondition", () => {
   describe("handler", () => {
-    let condition: ReturnType<typeof createCardDeckAccessCondition>
+    let condition: ReturnType<typeof createSchoolItemAccessCondition>
     beforeEach(() => {
-      condition = createCardDeckAccessCondition({} as Core.Strapi)
+      condition = createSchoolItemAccessCondition({} as Core.Strapi)
     })
 
     it("handles admin user", async () => {
@@ -34,7 +34,7 @@ describe("createCardDeckAccessCondition", () => {
     })
 
     it("returns false if user is not admin and school is not found", async () => {
-      const condition = createCardDeckAccessCondition(
+      const condition = createSchoolItemAccessCondition(
         getMockStrapiObject(null) as unknown as Core.Strapi
       )
 
@@ -55,7 +55,7 @@ describe("createCardDeckAccessCondition", () => {
     })
 
     it("returns correct query object", async () => {
-      condition = createCardDeckAccessCondition(
+      condition = createSchoolItemAccessCondition(
         getMockStrapiObject([
           {
             id: 42,
@@ -81,7 +81,7 @@ describe("createCardDeckAccessCondition", () => {
     })
 
     it("returns correct query object for multiple schools", async () => {
-      condition = createCardDeckAccessCondition(
+      condition = createSchoolItemAccessCondition(
         getMockStrapiObject([
           {
             id: 42,

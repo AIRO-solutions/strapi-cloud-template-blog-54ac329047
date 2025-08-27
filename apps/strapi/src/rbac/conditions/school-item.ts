@@ -7,7 +7,7 @@ import { RbacConditionUser } from "./util/types"
  * Handles access to items with the ` school ` field
  * @param strapi
  */
-export const createCardDeckAccessCondition = (strapi: Core.Strapi) => ({
+export const createSchoolItemAccessCondition = (strapi: Core.Strapi) => ({
   displayName: "Can access school item",
   name: "can-access-school-item",
   plugin: "admin",

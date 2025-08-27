@@ -1,11 +1,11 @@
 import type { Core } from "@strapi/strapi"
 
-import { createCardDeckAccessCondition } from "./card-deck"
 import { createSchoolAccessCondition } from "./school"
+import { createSchoolItemAccessCondition } from "./school-item"
 
 const rbacConditionFactories = [
   createSchoolAccessCondition,
-  createCardDeckAccessCondition,
+  createSchoolItemAccessCondition,
 ] as const
 
 type RegisterConditionsParams = {
