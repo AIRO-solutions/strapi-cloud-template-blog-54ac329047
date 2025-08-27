@@ -88,6 +88,7 @@ jobs:
 
       - name: yarn test
         run: yarn test
+
   build:
     name: Build all apps
     timeout-minutes: 15
