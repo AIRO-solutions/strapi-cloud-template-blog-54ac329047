@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_activities_multiple_choice_questions",
+  "info": {
+    "displayName": "Multiple Choice Question",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "options": {
+      "displayName": "Multiple Choice Option",
+      "type": "component",
+      "repeatable": true,
+      "component": "activities.multiple-choice-option"
+    },
+    "hint": {
+      "type": "customField",
+      "options": {
+        "preset": "defaultCkEditor"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    }
+  }
+}

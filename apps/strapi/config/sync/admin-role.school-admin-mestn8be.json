@@ -1,0 +1,613 @@
+{
+  "documentId": "zmcbgi7xwdk5ssujzlh9errl",
+  "name": "School Administrator",
+  "code": "school-admin-mestn8be",
+  "description": "Can administer school they are assigned to",
+  "locale": null,
+  "permissions": [
+    {
+      "documentId": "mnuifwa0k8jryvk9u4p777ae",
+      "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
+      "subject": "api::card-deck-progress.card-deck-progress",
+      "properties": {
+        "fields": [
+          "studentState",
+          "teacherState",
+          "student"
+        ]
+      },
+      "conditions": [
+        "admin::can-access-school-item"
+      ],
+      "locale": null
+    },
+    {
+      "documentId": "w3rfng13hl5ece2ogp9pd5o5",
+      "action": "plugin::content-manager.explorer.delete",
+      "actionParameters": {},
+      "subject": "api::card-deck-progress.card-deck-progress",
+      "properties": {},
+      "conditions": [
+        "admin::can-access-school-item"
+      ],
+      "locale": null
+    },
+    {
+      "documentId": "qhnv5d1qlq7ad2xcm6t8aks2",
+      "action": "plugin::content-manager.explorer.publish",
+      "actionParameters": {},
+      "subject": "api::card-deck-progress.card-deck-progress",
+      "properties": {},
+      "conditions": [
+        "admin::can-access-school-item"
+      ],
+      "locale": null
+    },
+    {
+      "documentId": "unesmi44ocyq3r3gj3c1ptg0",
+      "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
+      "subject": "api::card-deck-progress.card-deck-progress",
+      "properties": {
+        "fields": [
+          "studentState",
+          "teacherState",
+          "student"
+        ]
+      },
+      "conditions": [
+        "admin::can-access-school-item"
+      ],
+      "locale": null
+    },
+    {
+      "documentId": "qfrr4oj15z8dr89nq6thx7d6",
+      "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
+      "subject": "api::card-deck-progress.card-deck-progress",
+      "properties": {
+        "fields": [
+          "studentState",
+          "teacherState",
+          "student"
+        ]
+      },
+      "conditions": [
+        "admin::can-access-school-item"
+      ],
+      "locale": null
+    },
+    {
+      "documentId": "mhdpdlxxkuv5oan8nispr1df",
+      "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
+      "subject": "api::card-deck.card-deck",
+      "properties": {
+        "fields": [
+          "name",
+          "cardDeckProgresses",
+          "cards"
+        ]
+      },
+      "conditions": [
+        "admin::can-access-school-item"
+      ],
+      "locale": null
+    },
+    {
+      "documentId": "uovh1y20gk4815vczj79wbs9",
+      "action": "plugin::content-manager.explorer.delete",
+      "actionParameters": {},
+      "subject": "api::card-deck.card-deck",
+      "properties": {},
+      "conditions": [
+        "admin::can-access-school-item"
+      ],
+      "locale": null
+    },
+    {
+      "documentId": "h0swnmxu22fagz6mf0o53r85",
+      "action": "plugin::content-manager.explorer.publish",
+      "actionParameters": {},
+      "subject": "api::card-deck.card-deck",
+      "properties": {},
+      "conditions": [
+        "admin::can-access-school-item"
+      ],
+      "locale": null
+    },
+    {
+      "documentId": "ez9z9syv7mgihnf178510e5e",
+      "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
+      "subject": "api::card-deck.card-deck",
+      "properties": {
+        "fields": [
+          "name",
+          "cardDeckProgresses",
+          "cards"
+        ]
+      },
+      "conditions": [
+        "admin::can-access-school-item"
+      ],
+      "locale": null
+    },
+    {
+      "documentId": "e12timxbi0jpzmse94biiva6",
+      "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
+      "subject": "api::card-deck.card-deck",
+      "properties": {
+        "fields": [
+          "name",
+          "cardDeckProgresses",
+          "cards"
+        ]
+      },
+      "conditions": [
+        "admin::can-access-school-item"
+      ],
+      "locale": null
+    },
+    {
+      "documentId": "igv9arn211scr4vk4ztbj8c0",
+      "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
+      "subject": "api::card-response.card-response",
+      "properties": {
+        "fields": [
+          "card",
+          "cardDeck",
+          "student",
+          "school",
+          "activityResponse"
+        ]
+      },
+      "conditions": [],
+      "locale": null
+    },
+    {
+      "documentId": "z1oup6fys91ay24ahcn1bmeg",
+      "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
+      "subject": "api::card.card",
+      "properties": {
+        "fields": [
+          "name",
+          "title",
+          "text",
+          "cardDecks"
+        ]
+      },
+      "conditions": [
+        "admin::can-access-school-item"
+      ],
+      "locale": null
+    },
+    {
+      "documentId": "fnr9hkqe6gtl3mt5krg73vuv",
+      "action": "plugin::content-manager.explorer.delete",
+      "actionParameters": {},
+      "subject": "api::card.card",
+      "properties": {},
+      "conditions": [
+        "admin::can-access-school-item"
+      ],
+      "locale": null
+    },
+    {
+      "documentId": "c344glh8xwt20u38dibc62nt",
+      "action": "plugin::content-manager.explorer.publish",
+      "actionParameters": {},
+      "subject": "api::card.card",
+      "properties": {},
+      "conditions": [
+        "admin::can-access-school-item"
+      ],
+      "locale": null
+    },
+    {
+      "documentId": "hqr6n4q6cn4nba28dip4hc59",
+      "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
+      "subject": "api::card.card",
+      "properties": {
+        "fields": [
+          "name",
+          "title",
+          "text",
+          "cardDecks"
+        ]
+      },
+      "conditions": [
+        "admin::can-access-school-item"
+      ],
+      "locale": null
+    },
+    {
+      "documentId": "gj0od6p1r481h0qufxvne97x",
+      "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
+      "subject": "api::card.card",
+      "properties": {
+        "fields": [
+          "name",
+          "title",
+          "text",
+          "cardDecks"
+        ]
+      },
+      "conditions": [
+        "admin::can-access-school-item"
+      ],
+      "locale": null
+    },
+    {
+      "documentId": "y65t12mif6xwjtbly9a8nbca",
+      "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
+      "subject": "api::class.class",
+      "properties": {
+        "fields": [
+          "name",
+          "students"
+        ]
+      },
+      "conditions": [
+        "admin::can-access-school-item"
+      ],
+      "locale": null
+    },
+    {
+      "documentId": "fn7bvrhpf5ha0ym1b7balgq9",
+      "action": "plugin::content-manager.explorer.delete",
+      "actionParameters": {},
+      "subject": "api::class.class",
+      "properties": {},
+      "conditions": [
+        "admin::can-access-school-item"
+      ],
+      "locale": null
+    },
+    {
+      "documentId": "b27yd1pt3v3ofxe2dc1frd61",
+      "action": "plugin::content-manager.explorer.publish",
+      "actionParameters": {},
+      "subject": "api::class.class",
+      "properties": {},
+      "conditions": [
+        "admin::can-access-school-item"
+      ],
+      "locale": null
+    },
+    {
+      "documentId": "rohofndmk3f4jhati0csjzwd",
+      "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
+      "subject": "api::class.class",
+      "properties": {
+        "fields": [
+          "name",
+          "students"
+        ]
+      },
+      "conditions": [
+        "admin::can-access-school-item"
+      ],
+      "locale": null
+    },
+    {
+      "documentId": "hjuy3adgo2g5qb0t1iiidzhd",
+      "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
+      "subject": "api::class.class",
+      "properties": {
+        "fields": [
+          "name",
+          "students"
+        ]
+      },
+      "conditions": [
+        "admin::can-access-school-item"
+      ],
+      "locale": null
+    },
+    {
+      "documentId": "a75d2pvs2egl4ivjfcdj0i9v",
+      "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
+      "subject": "api::school.school",
+      "properties": {
+        "fields": [
+          "name",
+          "schoolCode",
+          "classes",
+          "users"
+        ]
+      },
+      "conditions": [
+        "admin::can-access-school"
+      ],
+      "locale": null
+    },
+    {
+      "documentId": "ppaksd9w5g4e64ng04ylduct",
+      "action": "plugin::content-manager.explorer.delete",
+      "actionParameters": {},
+      "subject": "api::school.school",
+      "properties": {},
+      "conditions": [
+        "admin::can-access-school"
+      ],
+      "locale": null
+    },
+    {
+      "documentId": "tzr50t5iaedin7x7ndjauvhm",
+      "action": "plugin::content-manager.explorer.publish",
+      "actionParameters": {},
+      "subject": "api::school.school",
+      "properties": {},
+      "conditions": [
+        "admin::can-access-school"
+      ],
+      "locale": null
+    },
+    {
+      "documentId": "wq21r8xca6p4nid8g1mxenwh",
+      "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
+      "subject": "api::school.school",
+      "properties": {
+        "fields": [
+          "name",
+          "schoolCode",
+          "classes",
+          "users"
+        ]
+      },
+      "conditions": [
+        "admin::can-access-school"
+      ],
+      "locale": null
+    },
+    {
+      "documentId": "hnoqnyhedhryhdphuzdzpht0",
+      "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
+      "subject": "api::school.school",
+      "properties": {
+        "fields": [
+          "name",
+          "schoolCode",
+          "classes",
+          "users"
+        ]
+      },
+      "conditions": [
+        "admin::can-access-school"
+      ],
+      "locale": null
+    },
+    {
+      "documentId": "qafhs1ngjv229f22odpx7dm0",
+      "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
+      "subject": "api::student.student",
+      "properties": {
+        "fields": [
+          "firstName",
+          "lastName",
+          "email",
+          "loginCode",
+          "class"
+        ]
+      },
+      "conditions": [
+        "admin::can-access-school-item"
+      ],
+      "locale": null
+    },
+    {
+      "documentId": "xjffzwl3iqjbtrn6rrr1n8tb",
+      "action": "plugin::content-manager.explorer.delete",
+      "actionParameters": {},
+      "subject": "api::student.student",
+      "properties": {},
+      "conditions": [
+        "admin::can-access-school-item"
+      ],
+      "locale": null
+    },
+    {
+      "documentId": "wuidj1ml59jgckwyty4jsxy7",
+      "action": "plugin::content-manager.explorer.publish",
+      "actionParameters": {},
+      "subject": "api::student.student",
+      "properties": {},
+      "conditions": [
+        "admin::can-access-school-item"
+      ],
+      "locale": null
+    },
+    {
+      "documentId": "m444vyqoo2ll7cbk7edgkqu0",
+      "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
+      "subject": "api::student.student",
+      "properties": {
+        "fields": [
+          "firstName",
+          "lastName",
+          "email",
+          "loginCode",
+          "class"
+        ]
+      },
+      "conditions": [
+        "admin::can-access-school-item"
+      ],
+      "locale": null
+    },
+    {
+      "documentId": "onil8p5uxxha3oyy4snbrrtc",
+      "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
+      "subject": "api::student.student",
+      "properties": {
+        "fields": [
+          "firstName",
+          "lastName",
+          "email",
+          "loginCode",
+          "class"
+        ]
+      },
+      "conditions": [
+        "admin::can-access-school-item"
+      ],
+      "locale": null
+    },
+    {
+      "documentId": "tiryx7qg0pgf0wvv2ul8mgm2",
+      "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
+      "subject": "api::subject.subject",
+      "properties": {
+        "fields": [
+          "name",
+          "topics"
+        ]
+      },
+      "conditions": [
+        "admin::can-access-school-item"
+      ],
+      "locale": null
+    },
+    {
+      "documentId": "fq9vfagto4vbo5ireghbf2o8",
+      "action": "plugin::content-manager.explorer.delete",
+      "actionParameters": {},
+      "subject": "api::subject.subject",
+      "properties": {},
+      "conditions": [
+        "admin::can-access-school-item"
+      ],
+      "locale": null
+    },
+    {
+      "documentId": "ivw63y64ywk5gowua7hbawv5",
+      "action": "plugin::content-manager.explorer.publish",
+      "actionParameters": {},
+      "subject": "api::subject.subject",
+      "properties": {},
+      "conditions": [
+        "admin::can-access-school-item"
+      ],
+      "locale": null
+    },
+    {
+      "documentId": "mjzksuq2z6zw4cxndfaxjcq6",
+      "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
+      "subject": "api::subject.subject",
+      "properties": {
+        "fields": [
+          "name",
+          "topics"
+        ]
+      },
+      "conditions": [
+        "admin::can-access-school-item"
+      ],
+      "locale": null
+    },
+    {
+      "documentId": "n9l0q336xubmfx53bt4iack6",
+      "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
+      "subject": "api::subject.subject",
+      "properties": {
+        "fields": [
+          "name",
+          "topics"
+        ]
+      },
+      "conditions": [
+        "admin::can-access-school-item"
+      ],
+      "locale": null
+    },
+    {
+      "documentId": "ea5t2pmo4gq3tpdtxt4ag2g4",
+      "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
+      "subject": "api::topic.topic",
+      "properties": {
+        "fields": [
+          "name",
+          "subject"
+        ]
+      },
+      "conditions": [
+        "admin::can-access-school-item"
+      ],
+      "locale": null
+    },
+    {
+      "documentId": "xocya3uysw0goj9mp1vrmm87",
+      "action": "plugin::content-manager.explorer.delete",
+      "actionParameters": {},
+      "subject": "api::topic.topic",
+      "properties": {},
+      "conditions": [
+        "admin::can-access-school-item"
+      ],
+      "locale": null
+    },
+    {
+      "documentId": "gbijacb6cnwjba4ejrrnmd5v",
+      "action": "plugin::content-manager.explorer.publish",
+      "actionParameters": {},
+      "subject": "api::topic.topic",
+      "properties": {},
+      "conditions": [
+        "admin::can-access-school-item"
+      ],
+      "locale": null
+    },
+    {
+      "documentId": "mzikgzye3b81axu331hk6pxu",
+      "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
+      "subject": "api::topic.topic",
+      "properties": {
+        "fields": [
+          "name",
+          "subject"
+        ]
+      },
+      "conditions": [
+        "admin::can-access-school-item"
+      ],
+      "locale": null
+    },
+    {
+      "documentId": "hel1e2d3ia6d9h5ygih7djy9",
+      "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
+      "subject": "api::topic.topic",
+      "properties": {
+        "fields": [
+          "name",
+          "subject"
+        ]
+      },
+      "conditions": [
+        "admin::can-access-school-item"
+      ],
+      "locale": null
+    }
+  ]
+}

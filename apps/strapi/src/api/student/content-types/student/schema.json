@@ -26,18 +26,13 @@
     "loginCode": {
       "type": "string"
     },
-    "studen_specific_requirements": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::studen-specific-requirement.studen-specific-requirement"
-    },
     "class": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::class.class",
       "inversedBy": "students"
     },
-    "card_deck_progresses": {
+    "cardDeckProgresses": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::card-deck-progress.card-deck-progress",

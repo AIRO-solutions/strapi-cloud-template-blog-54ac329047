@@ -4,7 +4,7 @@
   "info": {
     "singularName": "card-deck-progress",
     "pluralName": "card-deck-progresses",
-    "displayName": "CardDeckProgress",
+    "displayName": "Card Deck Progress",
     "description": ""
   },
   "options": {
@@ -26,33 +26,27 @@
         "assesment-confirmed"
       ]
     },
-    "student": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::student.student",
-      "inversedBy": "card_deck_progresses"
-    },
-    "card_deck": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::card-deck.card-deck",
-      "inversedBy": "card_deck_progresses"
-    },
-    "current_card": {
+    "currentCard": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::card.card"
-    },
-    "card_answers": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::card-answer.card-answer",
-      "mappedBy": "card_deck_progress"
     },
     "school": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::school.school"
+    },
+    "cardDeck": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::card-deck.card-deck",
+      "inversedBy": "cardDeckProgresses"
+    },
+    "student": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::student.student",
+      "inversedBy": "cardDeckProgresses"
     }
   }
 }

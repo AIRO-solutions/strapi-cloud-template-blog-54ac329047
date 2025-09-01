@@ -4,35 +4,43 @@
   "info": {
     "singularName": "card-deck",
     "pluralName": "card-decks",
-    "displayName": "CardDeck",
+    "displayName": "Card Deck",
     "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "attributes": {
-    "cards": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::card.card",
-      "mappedBy": "card_deck"
+    "name": {
+      "type": "string"
     },
-    "topic": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::topic.topic",
-      "inversedBy": "card_decks"
-    },
-    "card_deck_progresses": {
+    "cardDeckProgresses": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::card-deck-progress.card-deck-progress",
-      "mappedBy": "card_deck"
+      "mappedBy": "cardDeck"
     },
     "school": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::school.school"
+    },
+    "cards": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::card.card",
+      "mappedBy": "cardDecks"
+    },
+    "topics": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::topic.topic",
+      "inversedBy": "cardDecks"
+    },
+    "subject": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::subject.subject"
     }
   }
 }

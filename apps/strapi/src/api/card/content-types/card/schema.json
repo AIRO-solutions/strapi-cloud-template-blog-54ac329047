@@ -10,24 +10,24 @@
   "options": {
     "draftAndPublish": true
   },
+  "pluginOptions": {},
   "attributes": {
-    "decription": {
-      "type": "text"
+    "name": {
+      "type": "string"
     },
-    "assessmentAIPrompt": {
-      "type": "text"
+    "title": {
+      "type": "string"
     },
-    "deckPosition": {
-      "type": "integer"
+    "text": {
+      "type": "customField",
+      "options": {
+        "preset": "defaultCkEditor"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
     },
-    "activity_type": {
+    "cardDecks": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::activity-type.activity-type"
-    },
-    "card_deck": {
-      "type": "relation",
-      "relation": "manyToOne",
+      "relation": "manyToMany",
       "target": "api::card-deck.card-deck",
       "inversedBy": "cards"
     },
@@ -35,6 +35,15 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::school.school"
+    },
+    "activity": {
+      "type": "dynamiczone",
+      "components": [
+        "activities.numeric-question",
+        "activities.required-confirmation",
+        "activities.multiple-choice-question",
+        "activities.experiment-hypothesis"
+      ]
     }
   }
 }

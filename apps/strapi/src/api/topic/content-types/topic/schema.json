@@ -14,12 +14,6 @@
     "name": {
       "type": "string"
     },
-    "card_decks": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::card-deck.card-deck",
-      "mappedBy": "topic"
-    },
     "subject": {
       "type": "relation",
       "relation": "manyToOne",
@@ -30,6 +24,12 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::school.school"
+    },
+    "cardDecks": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::card-deck.card-deck",
+      "mappedBy": "topics"
     }
   }
 }

@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_activities_experiment_hypotheses",
+  "info": {
+    "displayName": "Experiment Hypothesis",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "customField",
+      "options": {
+        "preset": "defaultCkEditor"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "aiEvaluationPrompt": {
+      "type": "text",
+      "private": true
+    }
+  }
+}

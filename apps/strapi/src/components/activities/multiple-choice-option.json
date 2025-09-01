@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_activities_multiple_choice_options",
+  "info": {
+    "displayName": "Multiple Choice Option",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "customField",
+      "options": {
+        "preset": "defaultCkEditor"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "isCorrect": {
+      "type": "boolean",
+      "private": true
+    },
+    "optionId": {
+      "type": "string",
+      "maxLength": 8,
+      "minLength": 8,
+      "unique": true
+    }
+  }
+}

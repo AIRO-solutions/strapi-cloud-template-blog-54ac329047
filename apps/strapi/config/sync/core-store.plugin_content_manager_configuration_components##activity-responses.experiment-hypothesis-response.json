@@ -1,0 +1,57 @@
+{
+  "key": "plugin_content_manager_configuration_components::activity-responses.experiment-hypothesis-response",
+  "value": {
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "id",
+      "defaultSortBy": "id",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "hypothesisContent": {
+        "edit": {
+          "label": "hypothesisContent",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "hypothesisContent",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "hypothesisContent"
+      ],
+      "edit": [
+        [
+          {
+            "name": "hypothesisContent",
+            "size": 6
+          }
+        ]
+      ]
+    },
+    "uid": "activity-responses.experiment-hypothesis-response",
+    "isComponent": true
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

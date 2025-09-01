@@ -1,0 +1,36 @@
+{
+  "collectionName": "components_activities_numeric_questions",
+  "info": {
+    "displayName": "Numeric Question",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "customField",
+      "options": {
+        "preset": "defaultCkEditor"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "exactAnswer": {
+      "type": "decimal"
+    },
+    "answerRangeLowerBound": {
+      "type": "decimal"
+    },
+    "answerRangeUpperBound": {
+      "type": "decimal"
+    },
+    "hint": {
+      "type": "customField",
+      "options": {
+        "preset": "defaultCkEditor"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    }
+  }
+}

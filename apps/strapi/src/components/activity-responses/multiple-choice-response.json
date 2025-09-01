@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_activity_responses_multiple_choice_responses",
+  "info": {
+    "displayName": "Multiple Choice Response",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "selectedOptions": {
+      "type": "json"
+    }
+  }
+}

@@ -369,80 +369,12 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   }
 }
 
-export interface ApiActivityTypeActivityType
-  extends Struct.CollectionTypeSchema {
-  collectionName: "activity_types"
-  info: {
-    description: ""
-    displayName: "ActivityType"
-    pluralName: "activity-types"
-    singularName: "activity-type"
-  }
-  options: {
-    draftAndPublish: true
-  }
-  attributes: {
-    createdAt: Schema.Attribute.DateTime
-    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
-      Schema.Attribute.Private
-    locale: Schema.Attribute.String & Schema.Attribute.Private
-    localizations: Schema.Attribute.Relation<
-      "oneToMany",
-      "api::activity-type.activity-type"
-    > &
-      Schema.Attribute.Private
-    publishedAt: Schema.Attribute.DateTime
-    school: Schema.Attribute.Relation<"oneToOne", "api::school.school">
-    type: Schema.Attribute.String
-    updatedAt: Schema.Attribute.DateTime
-    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
-      Schema.Attribute.Private
-  }
-}
-
-export interface ApiCardAnswerCardAnswer extends Struct.CollectionTypeSchema {
-  collectionName: "card_answers"
-  info: {
-    description: ""
-    displayName: "CardAnswer"
-    pluralName: "card-answers"
-    singularName: "card-answer"
-  }
-  options: {
-    draftAndPublish: true
-  }
-  attributes: {
-    answer: Schema.Attribute.Text
-    assessmentApproved: Schema.Attribute.Boolean
-    card: Schema.Attribute.Relation<"oneToOne", "api::card.card">
-    card_deck_progress: Schema.Attribute.Relation<
-      "manyToOne",
-      "api::card-deck-progress.card-deck-progress"
-    >
-    createdAt: Schema.Attribute.DateTime
-    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
-      Schema.Attribute.Private
-    llmAssesment: Schema.Attribute.Text
-    locale: Schema.Attribute.String & Schema.Attribute.Private
-    localizations: Schema.Attribute.Relation<
-      "oneToMany",
-      "api::card-answer.card-answer"
-    > &
-      Schema.Attribute.Private
-    publishedAt: Schema.Attribute.DateTime
-    school: Schema.Attribute.Relation<"oneToOne", "api::school.school">
-    updatedAt: Schema.Attribute.DateTime
-    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
-      Schema.Attribute.Private
-  }
-}
-
 export interface ApiCardDeckProgressCardDeckProgress
   extends Struct.CollectionTypeSchema {
   collectionName: "card_deck_progresses"
   info: {
     description: ""
-    displayName: "CardDeckProgress"
+    displayName: "Card Deck Progress"
     pluralName: "card-deck-progresses"
     singularName: "card-deck-progress"
   }
@@ -450,18 +382,11 @@ export interface ApiCardDeckProgressCardDeckProgress
     draftAndPublish: true
   }
   attributes: {
-    card_answers: Schema.Attribute.Relation<
-      "oneToMany",
-      "api::card-answer.card-answer"
-    >
-    card_deck: Schema.Attribute.Relation<
-      "manyToOne",
-      "api::card-deck.card-deck"
-    >
+    cardDeck: Schema.Attribute.Relation<"manyToOne", "api::card-deck.card-deck">
     createdAt: Schema.Attribute.DateTime
     createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private
-    current_card: Schema.Attribute.Relation<"oneToOne", "api::card.card">
+    currentCard: Schema.Attribute.Relation<"oneToOne", "api::card.card">
     locale: Schema.Attribute.String & Schema.Attribute.Private
     localizations: Schema.Attribute.Relation<
       "oneToMany",
@@ -487,7 +412,7 @@ export interface ApiCardDeckCardDeck extends Struct.CollectionTypeSchema {
   collectionName: "card_decks"
   info: {
     description: ""
-    displayName: "CardDeck"
+    displayName: "Card Deck"
     pluralName: "card-decks"
     singularName: "card-deck"
   }
@@ -495,11 +420,11 @@ export interface ApiCardDeckCardDeck extends Struct.CollectionTypeSchema {
     draftAndPublish: true
   }
   attributes: {
-    card_deck_progresses: Schema.Attribute.Relation<
+    cardDeckProgresses: Schema.Attribute.Relation<
       "oneToMany",
       "api::card-deck-progress.card-deck-progress"
     >
-    cards: Schema.Attribute.Relation<"oneToMany", "api::card.card">
+    cards: Schema.Attribute.Relation<"manyToMany", "api::card.card">
     createdAt: Schema.Attribute.DateTime
     createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private
@@ -509,9 +434,58 @@ export interface ApiCardDeckCardDeck extends Struct.CollectionTypeSchema {
       "api::card-deck.card-deck"
     > &
       Schema.Attribute.Private
+    name: Schema.Attribute.String
     publishedAt: Schema.Attribute.DateTime
     school: Schema.Attribute.Relation<"oneToOne", "api::school.school">
-    topic: Schema.Attribute.Relation<"manyToOne", "api::topic.topic">
+    subject: Schema.Attribute.Relation<"oneToOne", "api::subject.subject">
+    topics: Schema.Attribute.Relation<"manyToMany", "api::topic.topic">
+    updatedAt: Schema.Attribute.DateTime
+    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private
+  }
+}
+
+export interface ApiCardResponseCardResponse
+  extends Struct.CollectionTypeSchema {
+  collectionName: "card_responses"
+  info: {
+    description: ""
+    displayName: "Card Response"
+    pluralName: "card-responses"
+    singularName: "card-response"
+  }
+  options: {
+    draftAndPublish: true
+  }
+  attributes: {
+    activityResponse: Schema.Attribute.DynamicZone<
+      [
+        "activity-responses.required-confirmation-response",
+        "activity-responses.numeric-question-response",
+        "activity-responses.experiment-hypothesis-response",
+        "activity-responses.multiple-choice-response",
+      ]
+    > &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 1
+        },
+        number
+      >
+    card: Schema.Attribute.Relation<"oneToOne", "api::card.card">
+    cardDeck: Schema.Attribute.Relation<"oneToOne", "api::card-deck.card-deck">
+    createdAt: Schema.Attribute.DateTime
+    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private
+    locale: Schema.Attribute.String & Schema.Attribute.Private
+    localizations: Schema.Attribute.Relation<
+      "oneToMany",
+      "api::card-response.card-response"
+    > &
+      Schema.Attribute.Private
+    publishedAt: Schema.Attribute.DateTime
+    school: Schema.Attribute.Relation<"oneToOne", "api::school.school">
+    student: Schema.Attribute.Relation<"oneToOne", "api::student.student">
     updatedAt: Schema.Attribute.DateTime
     updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private
@@ -530,25 +504,35 @@ export interface ApiCardCard extends Struct.CollectionTypeSchema {
     draftAndPublish: true
   }
   attributes: {
-    activity_type: Schema.Attribute.Relation<
-      "oneToOne",
-      "api::activity-type.activity-type"
+    activity: Schema.Attribute.DynamicZone<
+      [
+        "activities.numeric-question",
+        "activities.required-confirmation",
+        "activities.multiple-choice-question",
+        "activities.experiment-hypothesis",
+      ]
     >
-    assessmentAIPrompt: Schema.Attribute.Text
-    card_deck: Schema.Attribute.Relation<
-      "manyToOne",
+    cardDecks: Schema.Attribute.Relation<
+      "manyToMany",
       "api::card-deck.card-deck"
     >
     createdAt: Schema.Attribute.DateTime
     createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private
-    deckPosition: Schema.Attribute.Integer
-    decription: Schema.Attribute.Text
     locale: Schema.Attribute.String & Schema.Attribute.Private
     localizations: Schema.Attribute.Relation<"oneToMany", "api::card.card"> &
       Schema.Attribute.Private
+    name: Schema.Attribute.String
     publishedAt: Schema.Attribute.DateTime
     school: Schema.Attribute.Relation<"oneToOne", "api::school.school">
+    text: Schema.Attribute.RichText &
+      Schema.Attribute.CustomField<
+        "plugin::ckeditor5.CKEditor",
+        {
+          preset: "defaultCkEditor"
+        }
+      >
+    title: Schema.Attribute.String
     updatedAt: Schema.Attribute.DateTime
     updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private
@@ -573,6 +557,7 @@ export interface ApiClassClass extends Struct.CollectionTypeSchema {
     locale: Schema.Attribute.String & Schema.Attribute.Private
     localizations: Schema.Attribute.Relation<"oneToMany", "api::class.class"> &
       Schema.Attribute.Private
+    name: Schema.Attribute.String
     publishedAt: Schema.Attribute.DateTime
     school: Schema.Attribute.Relation<"manyToOne", "api::school.school">
     students: Schema.Attribute.Relation<"oneToMany", "api::student.student">
@@ -864,39 +849,6 @@ export interface ApiSchoolSchool extends Struct.CollectionTypeSchema {
   }
 }
 
-export interface ApiStudenSpecificRequirementStudenSpecificRequirement
-  extends Struct.CollectionTypeSchema {
-  collectionName: "studen_specific_requirements"
-  info: {
-    description: ""
-    displayName: "StudenSpecificRequirement"
-    pluralName: "studen-specific-requirements"
-    singularName: "studen-specific-requirement"
-  }
-  options: {
-    draftAndPublish: true
-  }
-  attributes: {
-    configuration: Schema.Attribute.JSON
-    createdAt: Schema.Attribute.DateTime
-    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
-      Schema.Attribute.Private
-    locale: Schema.Attribute.String & Schema.Attribute.Private
-    localizations: Schema.Attribute.Relation<
-      "oneToMany",
-      "api::studen-specific-requirement.studen-specific-requirement"
-    > &
-      Schema.Attribute.Private
-    name: Schema.Attribute.String & Schema.Attribute.Required
-    publishedAt: Schema.Attribute.DateTime
-    school: Schema.Attribute.Relation<"oneToOne", "api::school.school">
-    type: Schema.Attribute.String & Schema.Attribute.Required
-    updatedAt: Schema.Attribute.DateTime
-    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
-      Schema.Attribute.Private
-  }
-}
-
 export interface ApiStudentStudent extends Struct.CollectionTypeSchema {
   collectionName: "students"
   info: {
@@ -909,7 +861,7 @@ export interface ApiStudentStudent extends Struct.CollectionTypeSchema {
     draftAndPublish: true
   }
   attributes: {
-    card_deck_progresses: Schema.Attribute.Relation<
+    cardDeckProgresses: Schema.Attribute.Relation<
       "oneToMany",
       "api::card-deck-progress.card-deck-progress"
     >
@@ -929,10 +881,6 @@ export interface ApiStudentStudent extends Struct.CollectionTypeSchema {
     loginCode: Schema.Attribute.String
     publishedAt: Schema.Attribute.DateTime
     school: Schema.Attribute.Relation<"oneToOne", "api::school.school">
-    studen_specific_requirements: Schema.Attribute.Relation<
-      "oneToMany",
-      "api::studen-specific-requirement.studen-specific-requirement"
-    >
     updatedAt: Schema.Attribute.DateTime
     updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private
@@ -1012,8 +960,8 @@ export interface ApiTopicTopic extends Struct.CollectionTypeSchema {
     draftAndPublish: true
   }
   attributes: {
-    card_decks: Schema.Attribute.Relation<
-      "oneToMany",
+    cardDecks: Schema.Attribute.Relation<
+      "manyToMany",
       "api::card-deck.card-deck"
     >
     createdAt: Schema.Attribute.DateTime
@@ -1541,10 +1489,9 @@ declare module "@strapi/strapi" {
       "admin::transfer-token": AdminTransferToken
       "admin::transfer-token-permission": AdminTransferTokenPermission
       "admin::user": AdminUser
-      "api::activity-type.activity-type": ApiActivityTypeActivityType
-      "api::card-answer.card-answer": ApiCardAnswerCardAnswer
       "api::card-deck-progress.card-deck-progress": ApiCardDeckProgressCardDeckProgress
       "api::card-deck.card-deck": ApiCardDeckCardDeck
+      "api::card-response.card-response": ApiCardResponseCardResponse
       "api::card.card": ApiCardCard
       "api::class.class": ApiClassClass
       "api::footer.footer": ApiFooterFooter
@@ -1553,7 +1500,6 @@ declare module "@strapi/strapi" {
       "api::page.page": ApiPagePage
       "api::redirect.redirect": ApiRedirectRedirect
       "api::school.school": ApiSchoolSchool
-      "api::studen-specific-requirement.studen-specific-requirement": ApiStudenSpecificRequirementStudenSpecificRequirement
       "api::student.student": ApiStudentStudent
       "api::subject.subject": ApiSubjectSubject
       "api::subscriber.subscriber": ApiSubscriberSubscriber

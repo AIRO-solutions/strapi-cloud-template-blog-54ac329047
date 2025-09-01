@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_activities_required_confirmations",
+  "info": {
+    "displayName": "Required Confirmation",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "conent": {
+      "type": "customField",
+      "options": {
+        "preset": "defaultCkEditor"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    }
+  }
+}

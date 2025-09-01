@@ -11,6 +11,9 @@
     "draftAndPublish": true
   },
   "attributes": {
+    "name": {
+      "type": "string"
+    },
     "students": {
       "type": "relation",
       "relation": "oneToMany",

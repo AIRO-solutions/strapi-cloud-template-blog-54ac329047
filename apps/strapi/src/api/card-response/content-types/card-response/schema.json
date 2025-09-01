@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "card_responses",
+  "info": {
+    "singularName": "card-response",
+    "pluralName": "card-responses",
+    "displayName": "Card Response",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "card": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::card.card"
+    },
+    "cardDeck": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::card-deck.card-deck"
+    },
+    "student": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::student.student"
+    },
+    "school": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::school.school"
+    },
+    "activityResponse": {
+      "type": "dynamiczone",
+      "components": [
+        "activity-responses.required-confirmation-response",
+        "activity-responses.numeric-question-response",
+        "activity-responses.experiment-hypothesis-response",
+        "activity-responses.multiple-choice-response"
+      ],
+      "max": 1
+    }
+  }
+}

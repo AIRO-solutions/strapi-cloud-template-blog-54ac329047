@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_activity_responses_experiment_hypothesis_responses",
+  "info": {
+    "displayName": "Experiment Hypothesis Response",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "hypothesisContent": {
+      "type": "text"
+    }
+  }
+}

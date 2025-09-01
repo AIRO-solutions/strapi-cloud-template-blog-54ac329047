@@ -6,139 +6,7 @@
   "locale": null,
   "permissions": [
     {
-      "documentId": "zr70748ml45l7wxkp57f4604",
-      "action": "plugin::content-manager.explorer.create",
-      "actionParameters": {},
-      "subject": "api::activity-type.activity-type",
-      "properties": {
-        "fields": [
-          "type",
-          "school"
-        ]
-      },
-      "conditions": [],
-      "locale": null
-    },
-    {
-      "documentId": "jzgf1kwwn5atb8i25shysfcu",
-      "action": "plugin::content-manager.explorer.delete",
-      "actionParameters": {},
-      "subject": "api::activity-type.activity-type",
-      "properties": {},
-      "conditions": [],
-      "locale": null
-    },
-    {
-      "documentId": "no0uctfhwxumh887se6zrm0q",
-      "action": "plugin::content-manager.explorer.publish",
-      "actionParameters": {},
-      "subject": "api::activity-type.activity-type",
-      "properties": {},
-      "conditions": [],
-      "locale": null
-    },
-    {
-      "documentId": "s8ptijng7gnpgwv2y1f1pdwf",
-      "action": "plugin::content-manager.explorer.read",
-      "actionParameters": {},
-      "subject": "api::activity-type.activity-type",
-      "properties": {
-        "fields": [
-          "type",
-          "school"
-        ]
-      },
-      "conditions": [],
-      "locale": null
-    },
-    {
-      "documentId": "si8sssezrk56g1ywtm2fnnmn",
-      "action": "plugin::content-manager.explorer.update",
-      "actionParameters": {},
-      "subject": "api::activity-type.activity-type",
-      "properties": {
-        "fields": [
-          "type",
-          "school"
-        ]
-      },
-      "conditions": [],
-      "locale": null
-    },
-    {
-      "documentId": "zlvk0w1433ivvtjpgfd6k0gg",
-      "action": "plugin::content-manager.explorer.create",
-      "actionParameters": {},
-      "subject": "api::card-answer.card-answer",
-      "properties": {
-        "fields": [
-          "answer",
-          "llmAssesment",
-          "assessmentApproved",
-          "card",
-          "card_deck_progress",
-          "school"
-        ]
-      },
-      "conditions": [],
-      "locale": null
-    },
-    {
-      "documentId": "ht58gggfntj53svoz64bcpf0",
-      "action": "plugin::content-manager.explorer.delete",
-      "actionParameters": {},
-      "subject": "api::card-answer.card-answer",
-      "properties": {},
-      "conditions": [],
-      "locale": null
-    },
-    {
-      "documentId": "xtvx7yl44e5y72j2g59pvmhj",
-      "action": "plugin::content-manager.explorer.publish",
-      "actionParameters": {},
-      "subject": "api::card-answer.card-answer",
-      "properties": {},
-      "conditions": [],
-      "locale": null
-    },
-    {
-      "documentId": "soqyyp6ug35f2mp3ziz8acfh",
-      "action": "plugin::content-manager.explorer.read",
-      "actionParameters": {},
-      "subject": "api::card-answer.card-answer",
-      "properties": {
-        "fields": [
-          "answer",
-          "llmAssesment",
-          "assessmentApproved",
-          "card",
-          "card_deck_progress",
-          "school"
-        ]
-      },
-      "conditions": [],
-      "locale": null
-    },
-    {
-      "documentId": "dxvpatfcctjic83uf93vahcr",
-      "action": "plugin::content-manager.explorer.update",
-      "actionParameters": {},
-      "subject": "api::card-answer.card-answer",
-      "properties": {
-        "fields": [
-          "answer",
-          "llmAssesment",
-          "assessmentApproved",
-          "card",
-          "card_deck_progress",
-          "school"
-        ]
-      },
-      "conditions": [],
-      "locale": null
-    },
-    {
-      "documentId": "ks58puocs9q6cnk3s9sd8qr5",
+      "documentId": "mwe1oyaor2q27ttgk1eg9ueh",
       "action": "plugin::content-manager.explorer.create",
       "actionParameters": {},
       "subject": "api::card-deck-progress.card-deck-progress",
@@ -146,11 +14,10 @@
         "fields": [
           "studentState",
           "teacherState",
-          "student",
-          "card_deck",
-          "current_card",
-          "card_answers",
-          "school"
+          "currentCard",
+          "school",
+          "cardDeck",
+          "student"
         ]
       },
       "conditions": [],
@@ -175,7 +42,7 @@
       "locale": null
     },
     {
-      "documentId": "mympfw10z2umacjc10nbhj97",
+      "documentId": "wgpxmm8tygykgsx546r68t37",
       "action": "plugin::content-manager.explorer.read",
       "actionParameters": {},
       "subject": "api::card-deck-progress.card-deck-progress",
@@ -183,18 +50,17 @@
         "fields": [
           "studentState",
           "teacherState",
-          "student",
-          "card_deck",
-          "current_card",
-          "card_answers",
-          "school"
+          "currentCard",
+          "school",
+          "cardDeck",
+          "student"
         ]
       },
       "conditions": [],
       "locale": null
     },
     {
-      "documentId": "zihd3emheze2hsd0r8b7f23e",
+      "documentId": "kgkrmvdfwy1mrpmyx4r3yf0r",
       "action": "plugin::content-manager.explorer.update",
       "actionParameters": {},
       "subject": "api::card-deck-progress.card-deck-progress",
@@ -202,27 +68,28 @@
         "fields": [
           "studentState",
           "teacherState",
-          "student",
-          "card_deck",
-          "current_card",
-          "card_answers",
-          "school"
+          "currentCard",
+          "school",
+          "cardDeck",
+          "student"
         ]
       },
       "conditions": [],
       "locale": null
     },
     {
-      "documentId": "zobjjvk3cklxwivog3ksxoed",
+      "documentId": "h64tl8p9wc4eh5oxjig632fi",
       "action": "plugin::content-manager.explorer.create",
       "actionParameters": {},
       "subject": "api::card-deck.card-deck",
       "properties": {
         "fields": [
+          "name",
+          "cardDeckProgresses",
+          "school",
           "cards",
-          "topic",
-          "card_deck_progresses",
-          "school"
+          "topics",
+          "subject"
         ]
       },
       "conditions": [],
@@ -247,57 +114,130 @@
       "locale": null
     },
     {
-      "documentId": "geg4k7f4kcnwig9wc62o7oyi",
+      "documentId": "fke8m0nyzo0d4xke8tircd11",
       "action": "plugin::content-manager.explorer.read",
       "actionParameters": {},
       "subject": "api::card-deck.card-deck",
       "properties": {
         "fields": [
+          "name",
+          "cardDeckProgresses",
+          "school",
           "cards",
-          "topic",
-          "card_deck_progresses",
-          "school"
+          "topics",
+          "subject"
         ]
       },
       "conditions": [],
       "locale": null
     },
     {
-      "documentId": "oot6kmmrgnyg1s1hid9yk8pt",
+      "documentId": "kt28v2l5qi38draz58gyjqyd",
       "action": "plugin::content-manager.explorer.update",
       "actionParameters": {},
       "subject": "api::card-deck.card-deck",
       "properties": {
         "fields": [
+          "name",
+          "cardDeckProgresses",
+          "school",
           "cards",
-          "topic",
-          "card_deck_progresses",
-          "school"
+          "topics",
+          "subject"
         ]
       },
       "conditions": [],
       "locale": null
     },
     {
-      "documentId": "bgpe8ur94l2cs0d9vnkn3rvn",
+      "documentId": "q8mkyr5dcpjwbj34rpvo39oc",
+      "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
+      "subject": "api::card-response.card-response",
+      "properties": {
+        "fields": [
+          "card",
+          "cardDeck",
+          "student",
+          "school",
+          "activityResponse"
+        ]
+      },
+      "conditions": [],
+      "locale": null
+    },
+    {
+      "documentId": "wpfdiy1ky4piasyqs43a3v3d",
+      "action": "plugin::content-manager.explorer.delete",
+      "actionParameters": {},
+      "subject": "api::card-response.card-response",
+      "properties": {},
+      "conditions": [],
+      "locale": null
+    },
+    {
+      "documentId": "veu10c0401q5f9jzji5xlbfw",
+      "action": "plugin::content-manager.explorer.publish",
+      "actionParameters": {},
+      "subject": "api::card-response.card-response",
+      "properties": {},
+      "conditions": [],
+      "locale": null
+    },
+    {
+      "documentId": "rqupyo4w8hftqr09lbqto4f7",
+      "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
+      "subject": "api::card-response.card-response",
+      "properties": {
+        "fields": [
+          "card",
+          "cardDeck",
+          "student",
+          "school",
+          "activityResponse"
+        ]
+      },
+      "conditions": [],
+      "locale": null
+    },
+    {
+      "documentId": "z3fyydzp034as3tgd3r1ox1f",
+      "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
+      "subject": "api::card-response.card-response",
+      "properties": {
+        "fields": [
+          "card",
+          "cardDeck",
+          "student",
+          "school",
+          "activityResponse"
+        ]
+      },
+      "conditions": [],
+      "locale": null
+    },
+    {
+      "documentId": "tpd8180840l2nu1o9olbf1tu",
       "action": "plugin::content-manager.explorer.create",
       "actionParameters": {},
       "subject": "api::card.card",
       "properties": {
         "fields": [
-          "decription",
-          "assessmentAIPrompt",
-          "deckPosition",
-          "activity_type",
-          "card_deck",
-          "school"
+          "name",
+          "title",
+          "text",
+          "cardDecks",
+          "school",
+          "activity"
         ]
       },
       "conditions": [],
       "locale": null
     },
     {
-      "documentId": "ef9ygj65t5udv66kk7be9btf",
+      "documentId": "nekgk5n4s5supqx6zzok0omg",
       "action": "plugin::content-manager.explorer.delete",
       "actionParameters": {},
       "subject": "api::card.card",
@@ -306,7 +246,7 @@
       "locale": null
     },
     {
-      "documentId": "j30l5z52kh1dqy0gswijog4n",
+      "documentId": "g8fovrmrl19kb6wxtt8ym65u",
       "action": "plugin::content-manager.explorer.publish",
       "actionParameters": {},
       "subject": "api::card.card",
@@ -315,48 +255,49 @@
       "locale": null
     },
     {
-      "documentId": "b2tpu712cry0cygg5un8brit",
+      "documentId": "r1e51ku3xcdmss8ddqjfx27z",
       "action": "plugin::content-manager.explorer.read",
       "actionParameters": {},
       "subject": "api::card.card",
       "properties": {
         "fields": [
-          "decription",
-          "assessmentAIPrompt",
-          "deckPosition",
-          "activity_type",
-          "card_deck",
-          "school"
+          "name",
+          "title",
+          "text",
+          "cardDecks",
+          "school",
+          "activity"
         ]
       },
       "conditions": [],
       "locale": null
     },
     {
-      "documentId": "pk2yssodjez54jfph8ehhd89",
+      "documentId": "vdydcrfuv82vhn0p1c66eifz",
       "action": "plugin::content-manager.explorer.update",
       "actionParameters": {},
       "subject": "api::card.card",
       "properties": {
         "fields": [
-          "decription",
-          "assessmentAIPrompt",
-          "deckPosition",
-          "activity_type",
-          "card_deck",
-          "school"
+          "name",
+          "title",
+          "text",
+          "cardDecks",
+          "school",
+          "activity"
         ]
       },
       "conditions": [],
       "locale": null
     },
     {
-      "documentId": "l6jeyqrok5t802xr1792il9p",
+      "documentId": "hn9xnsiku3n7x27fon5drb2o",
       "action": "plugin::content-manager.explorer.create",
       "actionParameters": {},
       "subject": "api::class.class",
       "properties": {
         "fields": [
+          "name",
           "students",
           "school"
         ]
@@ -383,12 +324,13 @@
       "locale": null
     },
     {
-      "documentId": "c0l0sacnq6g2qg45y9wlz8n8",
+      "documentId": "lcn5wthrmuar1d6q4v83z5yq",
       "action": "plugin::content-manager.explorer.read",
       "actionParameters": {},
       "subject": "api::class.class",
       "properties": {
         "fields": [
+          "name",
           "students",
           "school"
         ]
@@ -397,12 +339,13 @@
       "locale": null
     },
     {
-      "documentId": "zljbdyevrfqzmde8gbf4tnaq",
+      "documentId": "p5vcyc3u33wbb33tpw4i6lvm",
       "action": "plugin::content-manager.explorer.update",
       "actionParameters": {},
       "subject": "api::class.class",
       "properties": {
         "fields": [
+          "name",
           "students",
           "school"
         ]
@@ -703,7 +646,7 @@
       "locale": null
     },
     {
-      "documentId": "fq20mny4olxl69ymwxubpswg",
+      "documentId": "drn8v3ds94hzfw8vhpjqguxn",
       "action": "plugin::content-manager.explorer.create",
       "actionParameters": {},
       "subject": "api::page.page",
@@ -774,7 +717,7 @@
       "locale": null
     },
     {
-      "documentId": "g0xbtv6j38oywxo0jvhrtcjb",
+      "documentId": "xw7u9yu87hh37sjc4ii4nayq",
       "action": "plugin::content-manager.explorer.read",
       "actionParameters": {},
       "subject": "api::page.page",
@@ -819,7 +762,7 @@
       "locale": null
     },
     {
-      "documentId": "tcz5wt27gt5vn521obdamdy8",
+      "documentId": "adh8wdg53b15n9jhj3y9ghwn",
       "action": "plugin::content-manager.explorer.update",
       "actionParameters": {},
       "subject": "api::page.page",
@@ -864,7 +807,7 @@
       "locale": null
     },
     {
-      "documentId": "phou1zc764cep8nze2si7z3i",
+      "documentId": "y8w4p0mcf659w3m0ydtu9fs3",
       "action": "plugin::content-manager.explorer.create",
       "actionParameters": {},
       "subject": "api::redirect.redirect",
@@ -880,7 +823,7 @@
       "locale": null
     },
     {
-      "documentId": "dxri30935jd62e3o3nrdhfdi",
+      "documentId": "am8n4np1m0y4f20qcxswjfry",
       "action": "plugin::content-manager.explorer.delete",
       "actionParameters": {},
       "subject": "api::redirect.redirect",
@@ -889,7 +832,7 @@
       "locale": null
     },
     {
-      "documentId": "onm5vhj3wifwxcy1lrfw70bp",
+      "documentId": "m5tq4v7slw2eebz2ctoxqanf",
       "action": "plugin::content-manager.explorer.publish",
       "actionParameters": {},
       "subject": "api::redirect.redirect",
@@ -898,7 +841,7 @@
       "locale": null
     },
     {
-      "documentId": "a0fsfnqzndxr8e9yjzgs2shm",
+      "documentId": "w19pe9hjc5lfhgpqisn5guah",
       "action": "plugin::content-manager.explorer.read",
       "actionParameters": {},
       "subject": "api::redirect.redirect",
@@ -914,7 +857,7 @@
       "locale": null
     },
     {
-      "documentId": "ia4ca1ny8bt9x9n8qbao7kci",
+      "documentId": "asjoe78300dmc25urtdtvs14",
       "action": "plugin::content-manager.explorer.update",
       "actionParameters": {},
       "subject": "api::redirect.redirect",
@@ -999,73 +942,7 @@
       "locale": null
     },
     {
-      "documentId": "bocmb1lhh472pyf9tgzobwkr",
-      "action": "plugin::content-manager.explorer.create",
-      "actionParameters": {},
-      "subject": "api::studen-specific-requirement.studen-specific-requirement",
-      "properties": {
-        "fields": [
-          "type",
-          "name",
-          "configuration",
-          "school"
-        ]
-      },
-      "conditions": [],
-      "locale": null
-    },
-    {
-      "documentId": "oqtnz066t7x6b1mt3q878ezx",
-      "action": "plugin::content-manager.explorer.delete",
-      "actionParameters": {},
-      "subject": "api::studen-specific-requirement.studen-specific-requirement",
-      "properties": {},
-      "conditions": [],
-      "locale": null
-    },
-    {
-      "documentId": "cxyx8op33b7rpobdwnl037we",
-      "action": "plugin::content-manager.explorer.publish",
-      "actionParameters": {},
-      "subject": "api::studen-specific-requirement.studen-specific-requirement",
-      "properties": {},
-      "conditions": [],
-      "locale": null
-    },
-    {
-      "documentId": "zp4ytdnsr916e9kkvpfnz964",
-      "action": "plugin::content-manager.explorer.read",
-      "actionParameters": {},
-      "subject": "api::studen-specific-requirement.studen-specific-requirement",
-      "properties": {
-        "fields": [
-          "type",
-          "name",
-          "configuration",
-          "school"
-        ]
-      },
-      "conditions": [],
-      "locale": null
-    },
-    {
-      "documentId": "h840pnk01jc1o1b157lnj9hk",
-      "action": "plugin::content-manager.explorer.update",
-      "actionParameters": {},
-      "subject": "api::studen-specific-requirement.studen-specific-requirement",
-      "properties": {
-        "fields": [
-          "type",
-          "name",
-          "configuration",
-          "school"
-        ]
-      },
-      "conditions": [],
-      "locale": null
-    },
-    {
-      "documentId": "rw2o3rh151go5rt9ktlz89g4",
+      "documentId": "ibqhg00gl95e0roslls7n8ly",
       "action": "plugin::content-manager.explorer.create",
       "actionParameters": {},
       "subject": "api::student.student",
@@ -1075,9 +952,8 @@
           "lastName",
           "email",
           "loginCode",
-          "studen_specific_requirements",
           "class",
-          "card_deck_progresses",
+          "cardDeckProgresses",
           "school"
         ]
       },
@@ -1103,7 +979,7 @@
       "locale": null
     },
     {
-      "documentId": "wbvloiul7bpmtqkq5mqajkou",
+      "documentId": "tygp5xc6pzq2k6tu0vdvd402",
       "action": "plugin::content-manager.explorer.read",
       "actionParameters": {},
       "subject": "api::student.student",
@@ -1113,9 +989,8 @@
           "lastName",
           "email",
           "loginCode",
-          "studen_specific_requirements",
           "class",
-          "card_deck_progresses",
+          "cardDeckProgresses",
           "school"
         ]
       },
@@ -1123,7 +998,7 @@
       "locale": null
     },
     {
-      "documentId": "ufxzgsezao5ei3yedsohkv57",
+      "documentId": "b19nfpl4wlr49ug2wvvpipua",
       "action": "plugin::content-manager.explorer.update",
       "actionParameters": {},
       "subject": "api::student.student",
@@ -1133,9 +1008,8 @@
           "lastName",
           "email",
           "loginCode",
-          "studen_specific_requirements",
           "class",
-          "card_deck_progresses",
+          "cardDeckProgresses",
           "school"
         ]
       },
@@ -1269,16 +1143,16 @@
       "locale": null
     },
     {
-      "documentId": "ufb58hvc0oezpj9hbws3wyt8",
+      "documentId": "z8kcu6c6fu5yb9n24cchilpp",
       "action": "plugin::content-manager.explorer.create",
       "actionParameters": {},
       "subject": "api::topic.topic",
       "properties": {
         "fields": [
           "name",
-          "card_decks",
           "subject",
-          "school"
+          "school",
+          "cardDecks"
         ]
       },
       "conditions": [],
@@ -1303,32 +1177,32 @@
       "locale": null
     },
     {
-      "documentId": "t1rg8ve1vnm1k2kfy1da2jre",
+      "documentId": "hwuz1axtia1ti0rw3m2r78lj",
       "action": "plugin::content-manager.explorer.read",
       "actionParameters": {},
       "subject": "api::topic.topic",
       "properties": {
         "fields": [
           "name",
-          "card_decks",
           "subject",
-          "school"
+          "school",
+          "cardDecks"
         ]
       },
       "conditions": [],
       "locale": null
     },
     {
-      "documentId": "etcnmoufc5ye4e2h1ouryzs6",
+      "documentId": "jjvt6xvmu75sl7hn0k8wz4xs",
       "action": "plugin::content-manager.explorer.update",
       "actionParameters": {},
       "subject": "api::topic.topic",
       "properties": {
         "fields": [
           "name",
-          "card_decks",
           "subject",
-          "school"
+          "school",
+          "cardDecks"
         ]
       },
       "conditions": [],

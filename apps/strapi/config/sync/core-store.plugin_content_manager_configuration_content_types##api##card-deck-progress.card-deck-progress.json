@@ -1,0 +1,210 @@
+{
+  "key": "plugin_content_manager_configuration_content_types::api::card-deck-progress.card-deck-progress",
+  "value": {
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "id",
+      "defaultSortBy": "id",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "studentState": {
+        "edit": {
+          "label": "studentState",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "studentState",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "teacherState": {
+        "edit": {
+          "label": "teacherState",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "teacherState",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "student": {
+        "edit": {
+          "label": "student",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "firstName"
+        },
+        "list": {
+          "label": "student",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "currentCard": {
+        "edit": {
+          "label": "currentCard",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "currentCard",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "school": {
+        "edit": {
+          "label": "school",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "school",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "cardDeck": {
+        "edit": {
+          "label": "cardDeck",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "cardDeck",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "createdAt": {
+        "edit": {
+          "label": "createdAt",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true
+        },
+        "list": {
+          "label": "createdAt",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "updatedAt": {
+        "edit": {
+          "label": "updatedAt",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true
+        },
+        "list": {
+          "label": "updatedAt",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "createdBy": {
+        "edit": {
+          "label": "createdBy",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true,
+          "mainField": "firstname"
+        },
+        "list": {
+          "label": "createdBy",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "updatedBy": {
+        "edit": {
+          "label": "updatedBy",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true,
+          "mainField": "firstname"
+        },
+        "list": {
+          "label": "updatedBy",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "studentState",
+        "teacherState",
+        "student"
+      ],
+      "edit": [
+        [
+          {
+            "name": "studentState",
+            "size": 6
+          },
+          {
+            "name": "teacherState",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "student",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "cardDeck",
+            "size": 6
+          },
+          {
+            "name": "currentCard",
+            "size": 6
+          }
+        ]
+      ]
+    },
+    "uid": "api::card-deck-progress.card-deck-progress"
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

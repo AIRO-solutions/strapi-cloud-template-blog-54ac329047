@@ -1,0 +1,96 @@
+{
+  "key": "plugin_content_manager_configuration_components::activities.multiple-choice-option",
+  "value": {
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "optionId",
+      "defaultSortBy": "id",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "content": {
+        "edit": {
+          "label": "content",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "content",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "isCorrect": {
+        "edit": {
+          "label": "isCorrect",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "isCorrect",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "optionId": {
+        "edit": {
+          "label": "optionId",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "optionId",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "isCorrect",
+        "optionId"
+      ],
+      "edit": [
+        [
+          {
+            "name": "content",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "isCorrect",
+            "size": 4
+          },
+          {
+            "name": "optionId",
+            "size": 6
+          }
+        ]
+      ]
+    },
+    "uid": "activities.multiple-choice-option",
+    "isComponent": true
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

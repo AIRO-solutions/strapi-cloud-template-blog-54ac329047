@@ -1,16 +1,14 @@
 import type { UID } from "@strapi/strapi"
 
 export const relevantContentTypes: UID.ContentType[] = [
-  "api::activity-type.activity-type",
   "api::card.card",
   "api::class.class",
-  "api::card-answer.card-answer",
   "api::card-deck.card-deck",
+  "api::card-response.card-response",
   "api::student.student",
   "api::subject.subject",
   "api::topic.topic",
   "plugin::users-permissions.user",
-  "api::studen-specific-requirement.studen-specific-requirement",
 ] as const
 
 /**

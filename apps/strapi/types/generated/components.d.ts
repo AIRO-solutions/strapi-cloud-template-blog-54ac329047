@@ -1,5 +1,164 @@
 import type { Schema, Struct } from "@strapi/strapi"
 
+export interface ActivitiesExperimentHypothesis extends Struct.ComponentSchema {
+  collectionName: "components_activities_experiment_hypotheses"
+  info: {
+    description: ""
+    displayName: "Experiment Hypothesis"
+  }
+  attributes: {
+    aiEvaluationPrompt: Schema.Attribute.Text & Schema.Attribute.Private
+    content: Schema.Attribute.RichText &
+      Schema.Attribute.CustomField<
+        "plugin::ckeditor5.CKEditor",
+        {
+          preset: "defaultCkEditor"
+        }
+      >
+  }
+}
+
+export interface ActivitiesMultipleChoiceOption extends Struct.ComponentSchema {
+  collectionName: "components_activities_multiple_choice_options"
+  info: {
+    description: ""
+    displayName: "Multiple Choice Option"
+  }
+  attributes: {
+    content: Schema.Attribute.RichText &
+      Schema.Attribute.CustomField<
+        "plugin::ckeditor5.CKEditor",
+        {
+          preset: "defaultCkEditor"
+        }
+      >
+    isCorrect: Schema.Attribute.Boolean & Schema.Attribute.Private
+    optionId: Schema.Attribute.String &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 8
+        minLength: 8
+      }>
+  }
+}
+
+export interface ActivitiesMultipleChoiceQuestion
+  extends Struct.ComponentSchema {
+  collectionName: "components_activities_multiple_choice_questions"
+  info: {
+    description: ""
+    displayName: "Multiple Choice Question"
+  }
+  attributes: {
+    hint: Schema.Attribute.RichText &
+      Schema.Attribute.CustomField<
+        "plugin::ckeditor5.CKEditor",
+        {
+          preset: "defaultCkEditor"
+        }
+      >
+    options: Schema.Attribute.Component<
+      "activities.multiple-choice-option",
+      true
+    >
+    title: Schema.Attribute.String
+  }
+}
+
+export interface ActivitiesNumericQuestion extends Struct.ComponentSchema {
+  collectionName: "components_activities_numeric_questions"
+  info: {
+    description: ""
+    displayName: "Numeric Question"
+  }
+  attributes: {
+    answerRangeLowerBound: Schema.Attribute.Decimal
+    answerRangeUpperBound: Schema.Attribute.Decimal
+    content: Schema.Attribute.RichText &
+      Schema.Attribute.CustomField<
+        "plugin::ckeditor5.CKEditor",
+        {
+          preset: "defaultCkEditor"
+        }
+      >
+    exactAnswer: Schema.Attribute.Decimal
+    hint: Schema.Attribute.RichText &
+      Schema.Attribute.CustomField<
+        "plugin::ckeditor5.CKEditor",
+        {
+          preset: "defaultCkEditor"
+        }
+      >
+    title: Schema.Attribute.String
+  }
+}
+
+export interface ActivitiesRequiredConfirmation extends Struct.ComponentSchema {
+  collectionName: "components_activities_required_confirmations"
+  info: {
+    description: ""
+    displayName: "Required Confirmation"
+  }
+  attributes: {
+    conent: Schema.Attribute.RichText &
+      Schema.Attribute.CustomField<
+        "plugin::ckeditor5.CKEditor",
+        {
+          preset: "defaultCkEditor"
+        }
+      >
+    title: Schema.Attribute.String
+  }
+}
+
+export interface ActivityResponsesExperimentHypothesisResponse
+  extends Struct.ComponentSchema {
+  collectionName: "components_activity_responses_experiment_hypothesis_responses"
+  info: {
+    description: ""
+    displayName: "Experiment Hypothesis Response"
+  }
+  attributes: {
+    hypothesisContent: Schema.Attribute.Text
+  }
+}
+
+export interface ActivityResponsesMultipleChoiceResponse
+  extends Struct.ComponentSchema {
+  collectionName: "components_activity_responses_multiple_choice_responses"
+  info: {
+    description: ""
+    displayName: "Multiple Choice Response"
+  }
+  attributes: {
+    selectedOptions: Schema.Attribute.JSON
+  }
+}
+
+export interface ActivityResponsesNumericQuestionResponse
+  extends Struct.ComponentSchema {
+  collectionName: "components_activity_responses_numeric_question_responses"
+  info: {
+    description: ""
+    displayName: "Numeric Question Response"
+  }
+  attributes: {
+    answer: Schema.Attribute.Decimal
+  }
+}
+
+export interface ActivityResponsesRequiredConfirmationResponse
+  extends Struct.ComponentSchema {
+  collectionName: "components_activity_responses_required_confirmation_responses"
+  info: {
+    description: ""
+    displayName: "Required Confirmation Response"
+  }
+  attributes: {
+    confirmed: Schema.Attribute.Boolean
+  }
+}
+
 export interface ElementsFooterItem extends Struct.ComponentSchema {
   collectionName: "components_elements_footer_items"
   info: {
@@ -45,17 +204,6 @@ export interface SectionsAnimatedLogoRow extends Struct.ComponentSchema {
   attributes: {
     logos: Schema.Attribute.Component<"utilities.basic-image", true>
     text: Schema.Attribute.String & Schema.Attribute.Required
-  }
-}
-
-export interface SectionsCardDeckCard extends Struct.ComponentSchema {
-  collectionName: "components_sections_card_deck_cards"
-  info: {
-    displayName: "Card Deck Card"
-  }
-  attributes: {
-    card: Schema.Attribute.Relation<"oneToOne", "api::card.card">
-    deckPosisiton: Schema.Attribute.Integer
   }
 }
 
@@ -352,11 +500,19 @@ export interface UtilitiesText extends Struct.ComponentSchema {
 declare module "@strapi/strapi" {
   export module Public {
     export interface ComponentSchemas {
+      "activities.experiment-hypothesis": ActivitiesExperimentHypothesis
+      "activities.multiple-choice-option": ActivitiesMultipleChoiceOption
+      "activities.multiple-choice-question": ActivitiesMultipleChoiceQuestion
+      "activities.numeric-question": ActivitiesNumericQuestion
+      "activities.required-confirmation": ActivitiesRequiredConfirmation
+      "activity-responses.experiment-hypothesis-response": ActivityResponsesExperimentHypothesisResponse
+      "activity-responses.multiple-choice-response": ActivityResponsesMultipleChoiceResponse
+      "activity-responses.numeric-question-response": ActivityResponsesNumericQuestionResponse
+      "activity-responses.required-confirmation-response": ActivityResponsesRequiredConfirmationResponse
       "elements.footer-item": ElementsFooterItem
       "forms.contact-form": FormsContactForm
       "forms.newsletter-form": FormsNewsletterForm
       "sections.animated-logo-row": SectionsAnimatedLogoRow
-      "sections.card-deck-card": SectionsCardDeckCard
       "sections.carousel": SectionsCarousel
       "sections.faq": SectionsFaq
       "sections.heading-with-cta-button": SectionsHeadingWithCtaButton

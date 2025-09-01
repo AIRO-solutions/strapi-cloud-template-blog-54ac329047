@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_activity_responses_numeric_question_responses",
+  "info": {
+    "displayName": "Numeric Question Response",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "answer": {
+      "type": "decimal"
+    }
+  }
+}

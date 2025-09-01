@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_activity_responses_required_confirmation_responses",
+  "info": {
+    "displayName": "Required Confirmation Response",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "confirmed": {
+      "type": "boolean"
+    }
+  }
+}
